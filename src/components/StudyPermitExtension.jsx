@@ -271,7 +271,7 @@ const StudyPermitExtension = () => {
             ]}
           >
             <Upload
-              name="Medical_Certificate"
+              name="Medical_Certificate_File"
               customRequest={(info) => {
                 setMedicalCertificateFileList([info.file]);
               }}
@@ -314,7 +314,7 @@ const StudyPermitExtension = () => {
                 ]}
               >
                 <Upload
-                  name="Study_Permit"
+                  name="Study_Permit_File"
                   customRequest={(info) => {
                     setStudyPermitFileList([info.file]);
                   }}
