@@ -192,10 +192,10 @@ const StudyPermitExtension = () => {
                 { required: true, message: "Kindly input counselling id!" },
               ]}
             >
-              <Input />
+              <Input className="sm:max-w-[260px]" />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
-              <Select placeholder="Choose" />
+              <Select placeholder="Choose" className="sm:max-w-[260px]" />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
@@ -205,7 +205,7 @@ const StudyPermitExtension = () => {
                 { required: true, message: "Kindly input Counselling Name!" },
               ]}
             >
-              <Input />
+              <Input className="sm:max-w-[260px]" />
             </Form.Item>
           </div>
           <Form.Item
@@ -301,7 +301,10 @@ const StudyPermitExtension = () => {
                 name="Visa_Chances"
                 className="w-[300px]"
               >
-                <InputNumber className="w-[300px]" addonAfter="%" />
+                <InputNumber
+                  className="w-[300px] sm:max-w-[260px]"
+                  addonAfter="%"
+                />
               </Form.Item>
               <Form.Item
                 label="Study Permit"
@@ -323,7 +326,7 @@ const StudyPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[260px] mb-1"
                   >
                     Select File
                   </Button>
@@ -341,7 +344,7 @@ const StudyPermitExtension = () => {
               Check List
             </legend>
             <Form.Item
-              name="Medical_Certificate"
+              name="Medical_Certificate_CL"
               valuePropName="checked"
               layout="horizontal"
               className="justify-self-start md:self-center"
