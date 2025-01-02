@@ -57,10 +57,13 @@ const StudyWorkPermitExtension = () => {
                 { required: true, message: "Kindly input counselling id!" },
               ]}
             >
-              <Input className="sm:max-w-[260px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
-              <Select placeholder="Choose" className="sm:max-w-[260px]" />
+              <Select
+                placeholder="Choose"
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
@@ -70,7 +73,7 @@ const StudyWorkPermitExtension = () => {
                 { required: true, message: "Kindly input Counselling Name!" },
               ]}
             >
-              <Input className="sm:max-w-[260px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
           </div>
           <Form.Item
@@ -86,14 +89,19 @@ const StudyWorkPermitExtension = () => {
               Study + Work Extension
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
-              <Form.Item label="Applicant" name="Applicant">
-                <Input className="w-[300px] sm:max-w-[260px]" />
+              <Form.Item
+                label="Applicant"
+                name="Applicant"
+                className="w-[300px]"
+              >
+                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
               <Form.Item
                 name="Study_Permit_File"
                 label="Study Permit"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -114,7 +122,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -130,6 +138,7 @@ const StudyWorkPermitExtension = () => {
                 label="Passport + Visa"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -150,7 +159,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -166,6 +175,7 @@ const StudyWorkPermitExtension = () => {
                 label="Medical"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -186,7 +196,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -202,6 +212,7 @@ const StudyWorkPermitExtension = () => {
                 label="File Upload"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -222,7 +233,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -238,6 +249,7 @@ const StudyWorkPermitExtension = () => {
                 label="Digital Photo"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -266,7 +278,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select Image
                   </Button>
@@ -282,6 +294,7 @@ const StudyWorkPermitExtension = () => {
                 label="New LOA And 2 Pay Slips"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -302,7 +315,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -318,6 +331,7 @@ const StudyWorkPermitExtension = () => {
                 label="Enrollment / Completion Letter"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -338,7 +352,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -354,6 +368,7 @@ const StudyWorkPermitExtension = () => {
                 label="Marriage Certificate"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   {
                     required: true,
@@ -374,7 +389,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>

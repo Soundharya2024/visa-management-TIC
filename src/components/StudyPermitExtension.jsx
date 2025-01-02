@@ -192,10 +192,13 @@ const StudyPermitExtension = () => {
                 { required: true, message: "Kindly input counselling id!" },
               ]}
             >
-              <Input className="sm:max-w-[260px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
-              <Select placeholder="Choose" className="sm:max-w-[260px]" />
+              <Select
+                placeholder="Choose"
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
@@ -205,7 +208,7 @@ const StudyPermitExtension = () => {
                 { required: true, message: "Kindly input Counselling Name!" },
               ]}
             >
-              <Input className="sm:max-w-[260px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
           </div>
           <Form.Item
@@ -302,7 +305,7 @@ const StudyPermitExtension = () => {
                 className="w-[300px]"
               >
                 <InputNumber
-                  className="w-[300px] sm:max-w-[260px]"
+                  className="w-full sm:max-w-[260px] md:max-w-[300px]"
                   addonAfter="%"
                 />
               </Form.Item>
@@ -311,7 +314,7 @@ const StudyPermitExtension = () => {
                 name="Study_Permit_File"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
                 rules={[
                   { required: true, message: "Kindly upload Study Permit!" },
                 ]}
@@ -326,7 +329,7 @@ const StudyPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] mb-1"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                   >
                     Select File
                   </Button>

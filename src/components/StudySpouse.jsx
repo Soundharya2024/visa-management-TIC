@@ -15,10 +15,16 @@ const StudySpouse = () => {
         <Form form={form} layout="vertical" onFinish={onFinish}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
-              <Select placeholder="Choose" className="sm:max-w-[260px]" />
+              <Select
+                placeholder="Choose"
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
-              <Select placeholder="Choose" className="sm:max-w-[260px]" />
+              <Select
+                placeholder="Choose"
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
           </div>
           <fieldset>
