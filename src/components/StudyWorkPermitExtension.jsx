@@ -487,7 +487,7 @@ const StudyWorkPermitExtension = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <Flex justify="canter" gap="large">
+          <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
                 Reset
