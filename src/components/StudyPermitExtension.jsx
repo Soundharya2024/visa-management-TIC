@@ -182,7 +182,12 @@ const StudyPermitExtension = () => {
     <>
       <h1 className="p-5 font-bold mb-2 border-b">Study Permit Extension</h1>
       <div className="p-5">
-        <Form form={form} layout="vertical" onFinish={onFinish}>
+        <Form
+          form={form}
+          layout="vertical"
+          scrollToFirstError={true}
+          onFinish={onFinish}
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
             <Form.Item
               label="counselling id"
@@ -220,8 +225,15 @@ const StudyPermitExtension = () => {
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
 
-          <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+          <fieldset className="mb-4">
+            <legend
+              className="font-bold"
+              style={{
+                color: "#000",
+                borderBottom: 0,
+                marginBottom: "0.5rem",
+              }}
+            >
               Education Details
             </legend>
             <Form.Item
@@ -268,7 +280,7 @@ const StudyPermitExtension = () => {
             name="Medical_Certificate_File"
             valuePropName="fileList"
             getValueFromEvent={getFile}
-            className="w-[300px] mt-7"
+            className="w-[300px]"
             rules={[
               { required: true, message: "Kindly upload Medical Certificate!" },
             ]}
@@ -355,7 +367,7 @@ const StudyPermitExtension = () => {
               <Checkbox>Medical Certificate</Checkbox>
             </Form.Item>
           </fieldset>
-          <Flex justify="end" gap="large">
+          <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
                 Reset

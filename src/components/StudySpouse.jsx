@@ -12,7 +12,12 @@ const StudySpouse = () => {
     <>
       <h1 className="p-5 font-bold mb-2 border-b">Study + Spouse</h1>
       <div className="p-5">
-        <Form form={form} layout="vertical" onFinish={onFinish}>
+        <Form
+          form={form}
+          layout="vertical"
+          scrollToFirstError={true}
+          onFinish={onFinish}
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
@@ -35,7 +40,7 @@ const StudySpouse = () => {
               <InputNumber className="w-[300px]" addonAfter="%" />
             </Form.Item>
           </fieldset>
-          <Flex justify="end" gap="large">
+          <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
                 Reset

@@ -193,7 +193,8 @@ const StudyVisa = () => {
   };
 
   const onFinish = (values) => {
-    console.log("Submitted Data:", values);
+    const formData = { ...values, Education_Details: data };
+    console.log("Submitted Data:", formData);
   };
 
   return (
@@ -801,8 +802,11 @@ const StudyVisa = () => {
               />
             </Form.Item>
           </fieldset>
-          <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+          <fieldset className="mb-4">
+            <legend
+              className="font-bold"
+              style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
+            >
               Education Details
             </legend>
             <Form.Item
@@ -852,7 +856,7 @@ const StudyVisa = () => {
               <InputNumber className="w-[300px]" addonAfter="%" />
             </Form.Item>
           </fieldset>
-          <Flex justify="end" gap="large">
+          <Flex justify="center" gap="large">
             <Form.Item label={null} labelCol={{}} wrapperCol={{}}>
               <Button className="w-28" htmlType="reset">
                 Reset

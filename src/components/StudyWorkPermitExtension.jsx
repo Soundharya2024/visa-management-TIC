@@ -47,7 +47,12 @@ const StudyWorkPermitExtension = () => {
         Study + Work Permit Extension
       </h1>
       <div className="p-5">
-        <Form form={form} layout="vertical" onFinish={onFinish}>
+        <Form
+          form={form}
+          layout="vertical"
+          scrollToFirstError={true}
+          onFinish={onFinish}
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
             <Form.Item
               label="counselling id"
@@ -482,7 +487,7 @@ const StudyWorkPermitExtension = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <Flex justify="end" gap="large">
+          <Flex justify="canter" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
                 Reset
