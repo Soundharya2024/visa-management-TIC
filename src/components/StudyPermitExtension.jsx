@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Form,
   Select,
@@ -7,175 +7,31 @@ import {
   Checkbox,
   Button,
   Flex,
+  Space,
   Upload,
-  Table,
   DatePicker,
+  Divider,
 } from "antd";
-import { UploadOutlined, CloseOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
-
-let uniqueId = 0; // A global counter to generate unique keys
+import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
 
 const StudyPermitExtension = () => {
   const [form] = Form.useForm();
 
-  //For Education Details Table
-  const [data, setData] = useState([]);
-
-  const addTableRow = () => {
-    const newRow = {
-      key: uniqueId++,
-      class: "",
-      college_name: "",
-      board_or_university: "",
-      year: null,
-      marks: null,
-    };
-    setData((prevData) => {
-      const updatedData = [...prevData, newRow];
-      form.setFieldsValue({ Education_Details: updatedData });
-
-      // Trigger form validation after adding a row
-      form.validateFields(["Education_Details"]).catch((errorInfo) => {
-        console.log("Validation Error:", errorInfo);
-      });
-
-      return updatedData;
-    });
-  };
-
-  const handleInputChange = (key, field, value) => {
-    setData((prevData) =>
-      prevData.map((row) =>
-        row.key === key ? { ...row, [field]: value } : row
-      )
-    );
-  };
-
-  const handleDeleteRow = (key) => {
-    setData((prevData) => {
-      const updatedData = prevData.filter((row) => row.key !== key);
-      form.setFieldsValue({ Education_Details: updatedData });
-      return updatedData;
-    });
-  };
-
-  useEffect(() => {
-    form.setFieldsValue({ Education_Details: data });
-  }, [data, form]);
-
-  const columns = [
-    {
-      dataIndex: "delete",
-      key: "delete",
-      width: 60,
-      fixed: "left",
-      render: (_, record) => (
-        <Button
-          type="link"
-          icon={<CloseOutlined />}
-          danger
-          onClick={() => handleDeleteRow(record.key)}
-        />
-      ),
-    },
-    {
-      title: "Class",
-      dataIndex: "class",
-      key: "class",
-      width: 200,
-      fixed: "left",
-      render: (_, record) => (
-        <Input
-          className="w-[178px]"
-          value={record.class}
-          onChange={(e) =>
-            handleInputChange(record.key, "class", e.target.value)
-          }
-        />
-      ),
-    },
-    {
-      title: "College Name",
-      dataIndex: "college_name",
-      key: "college_name",
-      width: 200,
-      render: (_, record) => (
-        <Input
-          className="w-[178px]"
-          value={record.college_name}
-          onChange={(e) =>
-            handleInputChange(record.key, "college_name", e.target.value)
-          }
-        />
-      ),
-    },
-    {
-      title: "Board/University",
-      dataIndex: "board_or_university",
-      key: "board/university",
-      width: 200,
-      render: (_, record) => (
-        <Input
-          className="w-[178px]"
-          value={record.board_or_university}
-          onChange={(e) =>
-            handleInputChange(record.key, "board_or_university", e.target.value)
-          }
-        />
-      ),
-    },
-    {
-      title: "Year",
-      key: "year",
-      dataIndex: "year",
-      width: 200,
-      render: (_, record) => (
-        <DatePicker
-          picker="year"
-          format="YYYY"
-          className="w-[178px]"
-          value={record.year ? dayjs(record.year.toString(), "YYYY") : null}
-          onChange={(date) => {
-            const formattedYear = date ? date.year() : null;
-            handleInputChange(record.key, "year", formattedYear);
-          }}
-        />
-      ),
-    },
-    {
-      title: "Marks %",
-      key: "marks",
-      dataIndex: "marks",
-      width: 200,
-      render: (_, record) => (
-        <InputNumber
-          addonAfter="%"
-          className="w-[178px]"
-          value={record.marks}
-          onChange={(value) => handleInputChange(record.key, "marks", value)}
-        />
-      ),
-    },
-  ];
-
-  const [medicalCertificateFileList, setMedicalCertificateFileList] = useState(
-    []
-  );
-  const [studyPermitFileList, setStudyPermitFileList] = useState([]);
-
-  //For file upload
+  //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
+    if (e?.file && e.file.status !== "removed") return e.file;
   };
 
   const onFinish = (values) => {
-    const formData = { ...values, Education_Details: data };
-    console.log("Submitted Data:", formData);
+    const formattedValues = {
+      ...values,
+      Education_Details: values.Education_Details?.map((item) => ({
+        ...item,
+        Year_field: item.Year_field?.format("YYYY") || "",
+      })),
+    };
+    console.log("Submitted Data:", formattedValues);
   };
 
   return (
@@ -188,14 +44,14 @@ const StudyPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
             <Form.Item
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              rules={[
-                { required: true, message: "Kindly input counselling id!" },
-              ]}
+              // rules={[
+              //   { required: true, message: "Kindly input counselling id!" },
+              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -209,89 +65,161 @@ const StudyPermitExtension = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              rules={[
-                { required: true, message: "Kindly input Counselling Name!" },
-              ]}
+              // rules={[
+              //   { required: true, message: "Kindly input Counselling Name!" },
+              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
           </div>
           <Form.Item
-            name="Profile_Details"
+            name="profile_details"
             valuePropName="checked"
             layout="horizontal"
             className="justify-self-start md:self-center"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
-
-          <fieldset className="mb-4">
+          <fieldset>
             <legend
               className="font-bold"
-              style={{
-                color: "#000",
-                borderBottom: 0,
-                marginBottom: "0.5rem",
-              }}
+              style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
             >
               Education Details
             </legend>
-            <Form.Item
-              name="Education_Details"
-              className="mb-3"
-              rules={[
-                {
-                  validator: (_, value) =>
-                    value && value.length > 0
-                      ? Promise.resolve()
-                      : Promise.reject(
-                          new Error("Kindly add at least one education detail!")
-                        ),
-                },
-              ]}
-            >
-              <div className="block max-w-full overflow-x-auto">
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  rowKey="key"
-                  rowHoverable={false}
-                  scroll={{ x: "max-content" }}
-                  className="max-w-full"
-                  pagination={false}
-                  locale={{
-                    emptyText: (
-                      <Button type="link" icon="+" onClick={addTableRow}>
+            <div className="overflow-x-auto">
+              <Space
+                style={{
+                  display: "flex",
+                  marginBottom: 15,
+                }}
+                className="border-t border-b w-max py-2 bg-zinc-50"
+                align="baseline"
+              >
+                <div className="w-[32px]"></div>
+                <div className="font-semibold w-[200px]">Class</div>
+                <div className="font-semibold w-[200px]">College Name</div>
+                <div className="font-semibold w-[200px]">Board/University</div>
+                <div className="font-semibold w-[200px]">Year</div>
+                <div className="font-semibold w-[200px]">Marks %</div>
+              </Space>
+              <Form.List name="Education_Details">
+                {(fields, { add, remove }) => (
+                  <>
+                    {fields.map(({ key, name, ...restField }) => (
+                      <Space
+                        key={key}
+                        className="last: mb-0"
+                        style={{
+                          display: "flex",
+                        }}
+                        align="baseline"
+                      >
+                        <Button
+                          type="link"
+                          icon={<CloseOutlined />}
+                          danger
+                          onClick={() => remove(name)}
+                        />
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Class"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "College_Name"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Board_University"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Year_field"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing last name",
+                          //   },
+                          // ]}
+                        >
+                          <DatePicker
+                            picker="year"
+                            format="YYYY"
+                            className="w-[200px]"
+                          />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Marks"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing last name",
+                          //   },
+                          // ]}
+                        >
+                          <InputNumber addonAfter="%" />
+                        </Form.Item>
+                      </Space>
+                    ))}
+                    {fields.length === 0 ? "" : <Divider className="m-0" />}
+                    <Form.Item
+                      className={fields.length === 0 ? "text-center" : ""}
+                    >
+                      <Button
+                        type="link"
+                        onClick={() => add()}
+                        icon={<PlusOutlined />}
+                      >
                         Add New
                       </Button>
-                    ),
-                  }}
-                ></Table>
-              </div>
-            </Form.Item>
-            {data.length !== 0 && (
-              <Button type="link" icon="+" onClick={addTableRow}>
-                Add New
-              </Button>
-            )}
+                    </Form.Item>
+                  </>
+                )}
+              </Form.List>
+            </div>
           </fieldset>
           <Form.Item
             label="Medical Certificate"
-            name="Medical_Certificate_File"
-            valuePropName="fileList"
+            name="Medical_Certificate"
+            valuePropName="file"
             getValueFromEvent={getFile}
             className="w-[300px]"
-            rules={[
-              { required: true, message: "Kindly upload Medical Certificate!" },
-            ]}
+            // rules={[
+            //   { required: true, message: "Kindly upload Medical Certificate!" },
+            // ]}
           >
-            <Upload
-              name="Medical_Certificate_File"
-              customRequest={(info) => {
-                setMedicalCertificateFileList([info.file]);
-              }}
-              showUploadList={false}
-            >
+            <Upload name="Medical_Certificate" maxCount={1}>
               <Button
                 icon={<UploadOutlined />}
                 iconPosition="end"
@@ -299,21 +227,16 @@ const StudyPermitExtension = () => {
               >
                 Select File
               </Button>
-              {medicalCertificateFileList[0] ? (
-                <span>{medicalCertificateFileList[0].name}</span>
-              ) : (
-                ""
-              )}
             </Upload>
           </Form.Item>
           <fieldset>
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 label="Visa Chances"
-                name="Visa_Chances"
+                name="Visa_Chances1"
                 className="w-[300px]"
               >
                 <InputNumber
@@ -323,21 +246,15 @@ const StudyPermitExtension = () => {
               </Form.Item>
               <Form.Item
                 label="Study Permit"
-                name="Study_Permit_File"
-                valuePropName="fileList"
+                name="Study_Permit"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  { required: true, message: "Kindly upload Study Permit!" },
-                ]}
+                // rules={[
+                //   { required: true, message: "Kindly upload Study Permit!" },
+                // ]}
               >
-                <Upload
-                  name="Study_Permit_File"
-                  customRequest={(info) => {
-                    setStudyPermitFileList([info.file]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Study_Permit" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -345,11 +262,6 @@ const StudyPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {studyPermitFileList[0] ? (
-                    <span>{studyPermitFileList[0].name}</span>
-                  ) : (
-                    ""
-                  )}
                 </Upload>
               </Form.Item>
             </div>
@@ -359,7 +271,7 @@ const StudyPermitExtension = () => {
               Check List
             </legend>
             <Form.Item
-              name="Medical_Certificate_CL"
+              name="Medical_Certificate1"
               valuePropName="checked"
               layout="horizontal"
               className="justify-self-start md:self-center"

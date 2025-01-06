@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Form,
   Select,
@@ -18,15 +18,10 @@ import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
 const VisitorStudies = () => {
   const [form] = Form.useForm();
 
-  //For file upload
-  const [TRFFileList, setTRFFileList] = useState([]);
-
+  //Set TRF_File field in form with file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
+    if (e?.file && e.file.status !== "removed") return e.file;
   };
 
   const onFinish = (values) => {
@@ -224,6 +219,7 @@ const VisitorStudies = () => {
               colon={false}
               labelAlign="left"
               labelCol={{ span: 3 }}
+              wrapperCol={{ span: 4 }}
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -231,26 +227,18 @@ const VisitorStudies = () => {
               </Radio.Group>
             </Form.Item>
             <Form.Item
-              name="TRF_File"
+              name="TRF"
               label="TRF"
               layout="horizontal"
               colon={false}
               labelAlign="left"
               labelCol={{ span: 3 }}
-              valuePropName="fileList"
+              wrapperCol={{ span: 6 }}
+              valuePropName="file"
               getValueFromEvent={getFile}
               //   rules={[{ required: true, message: "Kindly upload TRF!" }]}
             >
-              <Upload
-                name="TRF_File"
-                customRequest={(info) => {
-                  setTRFFileList((prevFileData) => [
-                    ...prevFileData,
-                    info.file,
-                  ]);
-                }}
-                showUploadList={false}
-              >
+              <Upload name="TRF" maxCount={1}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
@@ -258,11 +246,6 @@ const VisitorStudies = () => {
                 >
                   Select File
                 </Button>
-                {TRFFileList
-                  ? TRFFileList.map((file) => (
-                      <p key={file.name}>{file.name}</p>
-                    ))
-                  : ""}
               </Upload>
             </Form.Item>
           </fieldset>
@@ -407,7 +390,7 @@ const VisitorStudies = () => {
               <Input className="w-[200px]" />
             </Form.Item>
             <Form.Item
-              label="Intake"
+              label="intake"
               name="intake"
               className="w-[200px]"
               //   rules={[
@@ -422,7 +405,7 @@ const VisitorStudies = () => {
               Check List
             </legend>
             <Form.Item
-              name="TRF_CL"
+              name="TRF1"
               valuePropName="checked"
               layout="horizontal"
               className="justify-self-start md:self-center"

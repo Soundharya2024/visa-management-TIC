@@ -18,7 +18,7 @@ const StudySpouse = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
                 placeholder="Choose"
@@ -36,7 +36,7 @@ const StudySpouse = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances">
+            <Form.Item label="Visa Chances" name="Visa_Chances1">
               <InputNumber className="w-[300px]" addonAfter="%" />
             </Form.Item>
           </fieldset>

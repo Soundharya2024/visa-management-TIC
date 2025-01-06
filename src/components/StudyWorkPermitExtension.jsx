@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Form,
   Select,
@@ -14,27 +14,11 @@ import { UploadOutlined } from "@ant-design/icons";
 
 const StudyWorkPermitExtension = () => {
   const [form] = Form.useForm();
-  const [studyPermitFileList, setStudyPermitFileList] = useState([]);
-  const [passportPlusVisaFileList, setPassportPlusVisaFileList] = useState([]);
-  const [medicalFileList, setMedicalFileList] = useState([]);
-  const [fileUploadFileList, setFileUploadFileList] = useState([]);
-  const [digitalPhotoImageList, setDigitalPhotoImageList] = useState([]);
-  const [newLOAAndTwoPaySlipsFileList, setNewLOAAndTwoPaySlipsFileList] =
-    useState([]);
-  const [
-    enrollmentOrCompletionLetterFileList,
-    setEnrollmentOrCompletionLetterFileList,
-  ] = useState([]);
-  const [marriageCertificateFileList, setMarriageCertificateFileList] =
-    useState([]);
 
-  //For file upload
+  //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
+    if (e?.file && e.file.status !== "removed") return e.file;
   };
 
   const onFinish = (values) => {
@@ -53,14 +37,14 @@ const StudyWorkPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
             <Form.Item
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              rules={[
-                { required: true, message: "Kindly input counselling id!" },
-              ]}
+              // rules={[
+              //   { required: true, message: "Kindly input counselling id!" },
+              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -74,9 +58,9 @@ const StudyWorkPermitExtension = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              rules={[
-                { required: true, message: "Kindly input Counselling Name!" },
-              ]}
+              // rules={[
+              //   { required: true, message: "Kindly input Counselling Name!" },
+              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -93,37 +77,28 @@ const StudyWorkPermitExtension = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Study + Work Extension
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 label="Applicant"
-                name="Applicant"
+                name="Study_work_extension1"
                 className="w-[300px]"
               >
                 <Input className="sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
               <Form.Item
-                name="Study_Permit_File"
+                name="Study_Permit"
                 label="Study Permit"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload your Study Permit Document!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload your Study Permit Document!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="Study_Permit_File"
-                  customRequest={(info) => {
-                    setStudyPermitFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Study_Permit" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -131,36 +106,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {studyPermitFileList
-                    ? studyPermitFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="Passport_Visa_File"
+                name="Passport_Visa"
                 label="Passport + Visa"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload Passport and Visa Documents!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload Passport and Visa Documents!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="Passport_Visa_File"
-                  customRequest={(info) => {
-                    setPassportPlusVisaFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Passport_Visa" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -168,36 +129,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {passportPlusVisaFileList
-                    ? passportPlusVisaFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="Medical_File"
+                name="Medical"
                 label="Medical"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload Medical Document!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload Medical Document!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="Medical_File"
-                  customRequest={(info) => {
-                    setMedicalFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Medical" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -205,36 +152,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {medicalFileList
-                    ? medicalFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="File_Upload_File"
+                name="File_upload"
                 label="File Upload"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload File!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload File!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="File_Upload_File"
-                  customRequest={(info) => {
-                    setFileUploadFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="File_upload" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -242,28 +175,23 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {fileUploadFileList
-                    ? fileUploadFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="Digital_Photo_File"
+                name="Digital_Photo"
                 label="Digital Photo"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload Digital Photo!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload Digital Photo!",
+                //   },
+                // ]}
               >
                 <Upload
-                  name="Digital_Photo_File"
+                  name="Digital_Photo"
                   beforeUpload={(file) => {
                     const isPNG = file.type === "image/png";
                     const isJPEG = file.type === "image/jpeg";
@@ -272,13 +200,7 @@ const StudyWorkPermitExtension = () => {
                     }
                     return isPNG || isJPEG || Upload.LIST_IGNORE;
                   }}
-                  customRequest={(info) => {
-                    setDigitalPhotoImageList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
+                  maxCount={1}
                 >
                   <Button
                     icon={<UploadOutlined />}
@@ -287,36 +209,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select Image
                   </Button>
-                  {digitalPhotoImageList
-                    ? digitalPhotoImageList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="New_LOA_And_Two_Pay_Slips_File"
+                name="New_Loa_And_2_Pay_Slips"
                 label="New LOA And 2 Pay Slips"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload New LOA And 2 Pay Slips!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload New LOA And 2 Pay Slips!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="New_LOA_And_Two_Pay_Slips_File"
-                  customRequest={(info) => {
-                    setNewLOAAndTwoPaySlipsFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="New_Loa_And_2_Pay_Slips" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -324,36 +232,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {newLOAAndTwoPaySlipsFileList
-                    ? newLOAAndTwoPaySlipsFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="Enrollment_Or_Completion_Letter_File"
+                name="Enrollment_Completion_Letter"
                 label="Enrollment / Completion Letter"
-                valuePropName="fileList"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload Enrollment / Completion Letter!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload Enrollment / Completion Letter!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="Enrollment_Or_Completion_Letter_File"
-                  customRequest={(info) => {
-                    setEnrollmentOrCompletionLetterFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Enrollment_Completion_Letter" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -361,36 +255,22 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {enrollmentOrCompletionLetterFileList
-                    ? enrollmentOrCompletionLetterFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
                 </Upload>
               </Form.Item>
               <Form.Item
-                name="Marriage_Certificate_File"
-                label="Marriage Certificate"
-                valuePropName="fileList"
+                name="Study_Permit1"
+                label="Study Permit"
+                valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-full sm:max-w-[260px] md:max-w-[300px]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Kindly upload Marriage Certificate!",
-                  },
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload your Study Permit Document!",
+                //   },
+                // ]}
               >
-                <Upload
-                  name="Marriage_Certificate_File"
-                  customRequest={(info) => {
-                    setMarriageCertificateFileList((prevFileData) => [
-                      ...prevFileData,
-                      info.file,
-                    ]);
-                  }}
-                  showUploadList={false}
-                >
+                <Upload name="Study_Permit1" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -398,11 +278,29 @@ const StudyWorkPermitExtension = () => {
                   >
                     Select File
                   </Button>
-                  {marriageCertificateFileList
-                    ? marriageCertificateFileList.map((file) => (
-                        <p key={file.name}>{file.name}</p>
-                      ))
-                    : ""}
+                </Upload>
+              </Form.Item>
+              <Form.Item
+                name="Marriage_Certificate"
+                label="Marriage Certificate"
+                valuePropName="file"
+                getValueFromEvent={getFile}
+                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Kindly upload Marriage Certificate!",
+                //   },
+                // ]}
+              >
+                <Upload name="Marriage_Certificate" maxCount={1}>
+                  <Button
+                    icon={<UploadOutlined />}
+                    iconPosition="end"
+                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  >
+                    Select File
+                  </Button>
                 </Upload>
               </Form.Item>
             </div>
@@ -411,7 +309,7 @@ const StudyWorkPermitExtension = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances">
+            <Form.Item label="Visa Chances" name="Visa_Chances1">
               <InputNumber className="w-[300px]" addonAfter="%" />
             </Form.Item>
           </fieldset>
@@ -421,7 +319,7 @@ const StudyWorkPermitExtension = () => {
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 justify-items-start">
               <Form.Item
-                name="Study_Permit_CL"
+                name="Study_Permit2"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -429,7 +327,7 @@ const StudyWorkPermitExtension = () => {
                 <Checkbox>Study Permit</Checkbox>
               </Form.Item>
               <Form.Item
-                name="Passport_Visa_CL"
+                name="Passport_Visa1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -438,7 +336,7 @@ const StudyWorkPermitExtension = () => {
               </Form.Item>
               <Form.Item
                 label="Medical"
-                name="Medical_CL"
+                name="Medical1"
                 layout="horizontal"
                 colon={false}
                 className="w-[300px]"
@@ -446,7 +344,7 @@ const StudyWorkPermitExtension = () => {
                 <Input className="sm:max-w-[200px]" />
               </Form.Item>
               <Form.Item
-                name="File_Upload_CL"
+                name="File_upload1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -454,7 +352,7 @@ const StudyWorkPermitExtension = () => {
                 <Checkbox>File Upload</Checkbox>
               </Form.Item>
               <Form.Item
-                name="Digital_Photo_CL"
+                name="Digital_Photo1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -462,7 +360,7 @@ const StudyWorkPermitExtension = () => {
                 <Checkbox>Digital Photo</Checkbox>
               </Form.Item>
               <Form.Item
-                name="New_LOA_And_2_Pay_Slips_CL"
+                name="New_Loa_And_2_Pay_Slips1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -470,7 +368,7 @@ const StudyWorkPermitExtension = () => {
                 <Checkbox>New LOA And 2 Pay Slips</Checkbox>
               </Form.Item>
               <Form.Item
-                name="Enrollment_Completion_Letter_CL"
+                name="Enrollment_Completion_Letter1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
@@ -478,7 +376,15 @@ const StudyWorkPermitExtension = () => {
                 <Checkbox>Enrollment / Completion Letter</Checkbox>
               </Form.Item>
               <Form.Item
-                name="Marriage_Certificate_CL"
+                name="Study_Permit3"
+                valuePropName="checked"
+                layout="horizontal"
+                className="justify-self-start md:self-center"
+              >
+                <Checkbox>Study Permit</Checkbox>
+              </Form.Item>
+              <Form.Item
+                name="Marriage_Certificate1"
                 valuePropName="checked"
                 layout="horizontal"
                 className="justify-self-start md:self-center"
