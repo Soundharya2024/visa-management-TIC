@@ -4,11 +4,13 @@ import StudyVisa from "./components/StudyVisa";
 import StudyWorkPermitExtension from "./components/StudyWorkPermitExtension";
 import StudySpouse from "./components/StudySpouse";
 import VisitorStudies from "./components/VisitorStudies";
+import WorkPermitExtension from "./components/WorkPermitExtension";
+import WorkVisa from "./components/WorkVisa";
 
 const App = () => {
   return (
     <>
-      <VisitorStudies />
+      <WorkVisa />
     </>
   );
 };
