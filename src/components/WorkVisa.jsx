@@ -27,7 +27,7 @@ const StudySpouse = () => {
 
   return (
     <>
-      <h1 className="p-5 font-bold mb-2 border-b">Study + Spouse</h1>
+      <h1 className="p-5 font-bold mb-2 border-b">Work Visa</h1>
       <div className="p-5">
         <Form
           form={form}
