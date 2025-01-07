@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
-const StudySpouse = () => {
+const WorkVisa = () => {
   const [form] = Form.useForm();
 
   //For file upload, setting File fields in form with respective file details
@@ -729,4 +729,4 @@ const StudySpouse = () => {
   );
 };
 
-export default StudySpouse;
+export default WorkVisa;

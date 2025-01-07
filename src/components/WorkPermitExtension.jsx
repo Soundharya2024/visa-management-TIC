@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Select, Input, InputNumber, Checkbox, Button, Flex } from "antd";
 
-const StudySpouse = () => {
+const WorkPermitExtension = () => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -80,4 +80,4 @@ const StudySpouse = () => {
   );
 };
 
-export default StudySpouse;
+export default WorkPermitExtension;
