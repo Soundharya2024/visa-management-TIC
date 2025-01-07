@@ -69,7 +69,7 @@ const StudyWorkPermitExtension = () => {
             name="Profile_Details"
             valuePropName="checked"
             layout="horizontal"
-            className="justify-self-start md:self-center"
+            className="justify-self-start md:self-center w-[300px]"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
@@ -90,7 +90,7 @@ const StudyWorkPermitExtension = () => {
                 label="Study Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -113,7 +113,7 @@ const StudyWorkPermitExtension = () => {
                 label="Passport + Visa"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -136,7 +136,7 @@ const StudyWorkPermitExtension = () => {
                 label="Medical"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -159,7 +159,7 @@ const StudyWorkPermitExtension = () => {
                 label="File Upload"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -182,7 +182,7 @@ const StudyWorkPermitExtension = () => {
                 label="Digital Photo"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -216,7 +216,7 @@ const StudyWorkPermitExtension = () => {
                 label="New LOA And 2 Pay Slips"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -239,7 +239,7 @@ const StudyWorkPermitExtension = () => {
                 label="Enrollment / Completion Letter"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -262,7 +262,7 @@ const StudyWorkPermitExtension = () => {
                 label="Study Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -285,7 +285,7 @@ const StudyWorkPermitExtension = () => {
                 label="Marriage Certificate"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -309,8 +309,15 @@ const StudyWorkPermitExtension = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances1">
-              <InputNumber className="w-[300px]" addonAfter="%" />
+            <Form.Item
+              label="Visa Chances"
+              name="Visa_Chances1"
+              className="w-[300px]"
+            >
+              <InputNumber
+                className="w-[300px] sm:w-[260px] md:w-[300px]"
+                addonAfter="%"
+              />
             </Form.Item>
           </fieldset>
           <fieldset>
@@ -322,7 +329,7 @@ const StudyWorkPermitExtension = () => {
                 name="Study_Permit2"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>Study Permit</Checkbox>
               </Form.Item>
@@ -347,7 +354,7 @@ const StudyWorkPermitExtension = () => {
                 name="File_upload1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>File Upload</Checkbox>
               </Form.Item>
@@ -355,7 +362,7 @@ const StudyWorkPermitExtension = () => {
                 name="Digital_Photo1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>Digital Photo</Checkbox>
               </Form.Item>
@@ -363,7 +370,7 @@ const StudyWorkPermitExtension = () => {
                 name="New_Loa_And_2_Pay_Slips1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>New LOA And 2 Pay Slips</Checkbox>
               </Form.Item>
@@ -371,7 +378,7 @@ const StudyWorkPermitExtension = () => {
                 name="Enrollment_Completion_Letter1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>Enrollment / Completion Letter</Checkbox>
               </Form.Item>
@@ -379,7 +386,7 @@ const StudyWorkPermitExtension = () => {
                 name="Study_Permit3"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>Study Permit</Checkbox>
               </Form.Item>
@@ -387,7 +394,7 @@ const StudyWorkPermitExtension = () => {
                 name="Marriage_Certificate1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center"
+                className="justify-self-start md:self-center w-[300px]"
               >
                 <Checkbox>Marriage Certificate</Checkbox>
               </Form.Item>

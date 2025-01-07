@@ -11,7 +11,7 @@ import VisitorVisa from "./components/VisitorVisa";
 const App = () => {
   return (
     <>
-      <VisitorVisa />
+      <WorkVisa />
     </>
   );
 };

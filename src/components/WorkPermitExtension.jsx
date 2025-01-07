@@ -50,7 +50,7 @@ const WorkPermitExtension = () => {
             name="Profile_Details"
             valuePropName="checked"
             layout="horizontal"
-            className="justify-self-start md:self-center"
+            className="justify-self-start md:self-center w-[300px]"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
@@ -58,8 +58,15 @@ const WorkPermitExtension = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances1">
-              <InputNumber className="w-[300px]" addonAfter="%" />
+            <Form.Item
+              label="Visa Chances"
+              name="Visa_Chances1"
+              className="w-[300px]"
+            >
+              <InputNumber
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                addonAfter="%"
+              />
             </Form.Item>
           </fieldset>
           <Flex justify="center" gap="large">

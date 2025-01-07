@@ -54,39 +54,58 @@ const WorkVisa = () => {
               Necessary Information For Work Permit
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item label="Name" name="Name1">
-                <Input className="w-[300px]" />
+              <Form.Item label="Name" name="Name1" className="w-[300px]">
+                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
-              <Form.Item label="Age" name="Age">
-                <InputNumber className="w-[300px]" placeholder="#######" />
+              <Form.Item label="Age" name="Age" className="w-[300px]">
+                <InputNumber
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  placeholder="#######"
+                />
               </Form.Item>
-              <Form.Item label="Occupation" name="Occupation">
-                <Input className="w-[300px]" />
+              <Form.Item
+                label="Occupation"
+                name="Occupation"
+                className="w-[300px]"
+              >
+                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
               <Form.Item
                 label="Salary Or Monthly Income"
                 name="Salary_Or_Monthly_Income"
+                className="w-[300px]"
               >
-                <InputNumber className="w-[300px]" addonAfter="%" />
-              </Form.Item>
-              <Form.Item label="Bank Balance" name="Bank_Balance">
                 <InputNumber
-                  className="w-[300px]"
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  addonAfter="%"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Bank Balance"
+                name="Bank_Balance"
+                className="w-[300px]"
+              >
+                <InputNumber
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   addonAfter="₹"
                   placeholder="##,##,###.##"
                 />
               </Form.Item>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item name="ITR" label="ITR">
+              <Form.Item name="ITR" label="ITR" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
                   <Radio value="no">No</Radio>
                 </Radio.Group>
               </Form.Item>
-              <Form.Item label="ITR Amount  " name="ITR_Amount">
+              <Form.Item
+                label="ITR Amount  "
+                name="ITR_Amount"
+                className="w-[300px]"
+              >
                 <InputNumber
-                  className="w-[300px]"
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   addonAfter="₹"
                   placeholder="##,##,###.##"
                 />
@@ -103,7 +122,7 @@ const WorkVisa = () => {
                 label="Passport"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -126,7 +145,7 @@ const WorkVisa = () => {
                 label="Digital Photo"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -160,7 +179,7 @@ const WorkVisa = () => {
                 label="Marriage Certificate"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -183,7 +202,7 @@ const WorkVisa = () => {
                 label="Marriage Photos"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -213,7 +232,7 @@ const WorkVisa = () => {
                 label="Education Documents"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -236,7 +255,7 @@ const WorkVisa = () => {
                 label="Job Letter"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -259,7 +278,7 @@ const WorkVisa = () => {
                 label="ITR"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -282,7 +301,7 @@ const WorkVisa = () => {
                 label="Bank Statment"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -305,7 +324,7 @@ const WorkVisa = () => {
                 label="Salary Slips"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -329,7 +348,11 @@ const WorkVisa = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Sponsor
             </legend>
-            <Form.Item name="If_field" label="Sponsor's Country">
+            <Form.Item
+              name="If_field"
+              label="Sponsor's Country"
+              className="w-[300px]"
+            >
               <Radio.Group>
                 <Radio value="India">India</Radio>
                 <Radio value="Canada">Canada</Radio>
@@ -343,6 +366,7 @@ const WorkVisa = () => {
             <Form.Item
               name="Any_previous_travel_history"
               label="Any previous travel history"
+              className="w-[300px]"
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -355,7 +379,7 @@ const WorkVisa = () => {
                 label="Passport"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -373,7 +397,7 @@ const WorkVisa = () => {
                   </Button>
                 </Upload>
               </Form.Item>
-              <Form.Item name="Status" label="Status">
+              <Form.Item name="Status" label="Status" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="Work Permit">Work Permit</Radio>
                   <Radio value="Study Permit">Study Permit</Radio>
@@ -384,7 +408,7 @@ const WorkVisa = () => {
                 label="Fees Receipt"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -407,7 +431,7 @@ const WorkVisa = () => {
                 label="LOA"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -430,7 +454,7 @@ const WorkVisa = () => {
                 label="Enrollment Letter"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -453,7 +477,7 @@ const WorkVisa = () => {
                 label="GIC Certificate"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -476,7 +500,7 @@ const WorkVisa = () => {
                 label="Visa Copy"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -499,7 +523,7 @@ const WorkVisa = () => {
                 label="Study Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -522,7 +546,7 @@ const WorkVisa = () => {
                 label="Chat History"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -545,7 +569,7 @@ const WorkVisa = () => {
                 label="GIC Account Summary"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -568,7 +592,7 @@ const WorkVisa = () => {
                 label="Video Call History"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -591,7 +615,7 @@ const WorkVisa = () => {
                 label="Call History"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -614,7 +638,7 @@ const WorkVisa = () => {
                 label="Work permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -637,7 +661,7 @@ const WorkVisa = () => {
                 label="Job Letter / Appointment Letter"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -660,7 +684,7 @@ const WorkVisa = () => {
                 label="3 month Pay Slips"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -683,7 +707,7 @@ const WorkVisa = () => {
                 label="Account Summary"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -707,8 +731,15 @@ const WorkVisa = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances1">
-              <InputNumber className="w-[300px]" addonAfter="%" />
+            <Form.Item
+              label="Visa Chances"
+              name="Visa_Chances1"
+              className="w-[300px]"
+            >
+              <InputNumber
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                addonAfter="%"
+              />
             </Form.Item>
           </fieldset>
           <Flex justify="center" gap="large">

@@ -68,7 +68,11 @@ const StudyVisa = () => {
               Basic Questions
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item name="Is_Passport" label="Is Passport">
+              <Form.Item
+                name="Is_Passport"
+                label="Is Passport"
+                className="w-[300px]"
+              >
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
                   <Radio value="no">No</Radio>
@@ -79,7 +83,7 @@ const StudyVisa = () => {
                 label="Passport Upload"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[{ required: true, message: "Kindly upload TRF!" }]}
               >
                 <Upload name="Passport_Upload" maxCount={1}>
@@ -92,7 +96,7 @@ const StudyVisa = () => {
                   </Button>
                 </Upload>
               </Form.Item>
-              <Form.Item name="IELTS" label="IELTS">
+              <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
                   <Radio value="no">No</Radio>
@@ -103,7 +107,7 @@ const StudyVisa = () => {
                 label="TRF"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[{ required: true, message: "Kindly upload TRF!" }]}
               >
                 <Upload name="TRF" maxCount={1}>
@@ -119,6 +123,7 @@ const StudyVisa = () => {
               <Form.Item
                 name="All_Education_Documents"
                 label="All Education Documents"
+                className="w-[300px]"
               >
                 <Checkbox.Group>
                   <Row>
@@ -180,7 +185,7 @@ const StudyVisa = () => {
                 label="10th"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -203,7 +208,7 @@ const StudyVisa = () => {
                 label="12th"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -226,7 +231,7 @@ const StudyVisa = () => {
                 label="Diploma"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -249,7 +254,7 @@ const StudyVisa = () => {
                 label="Masters"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -272,7 +277,7 @@ const StudyVisa = () => {
                 label="Bachelors"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -290,15 +295,21 @@ const StudyVisa = () => {
                   </Button>
                 </Upload>
               </Form.Item>
-              <Form.Item name="if_spou" valuePropName="checked">
-                <Checkbox>if spouse is in CANADA but on Work Permit</Checkbox>
+              <Form.Item
+                name="if_spou"
+                valuePropName="checked"
+                className="w-[300px]"
+              >
+                <Checkbox className="sm:max-w-[260px] md:max-w-[300px]">
+                  if spouse is in CANADA but on Work Permit
+                </Checkbox>
               </Form.Item>
               <Form.Item
                 name="Spouse_Passport"
                 label="Spouse Passport"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -321,7 +332,7 @@ const StudyVisa = () => {
                 label="3 Pay Slips"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -344,7 +355,7 @@ const StudyVisa = () => {
                 label="Account Summary and Balance"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -368,7 +379,7 @@ const StudyVisa = () => {
                 label="Work Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -391,7 +402,7 @@ const StudyVisa = () => {
                 label="Job Letter / Appointment Letter"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -415,7 +426,7 @@ const StudyVisa = () => {
                 label="Chat and call History"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -443,7 +454,7 @@ const StudyVisa = () => {
               <Form.Item
                 label="Any Previous Refusal"
                 name="Any_Previous_Refusal"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   {
                 //     required: true,
@@ -470,7 +481,7 @@ const StudyVisa = () => {
                     height: 120,
                     resize: "none",
                   }}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:!max-w-[260px] md:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -491,13 +502,13 @@ const StudyVisa = () => {
                     height: 120,
                     resize: "none",
                   }}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:!max-w-[260px] md:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Gap Justification"
                 name="Gap_Justification"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px] sm:h-[120px]"
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 labelCol={{ style: { height: 52 } }}
                 // rules={[
                 //   {
@@ -512,7 +523,7 @@ const StudyVisa = () => {
                     height: 120,
                     resize: "none",
                   }}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:!max-w-[260px] md:!max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -650,8 +661,15 @@ const StudyVisa = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visa Chances
             </legend>
-            <Form.Item label="Visa Chances" name="Visa_Chances">
-              <InputNumber className="w-[300px]" addonAfter="%" />
+            <Form.Item
+              label="Visa Chances"
+              name="Visa_Chances"
+              className="w-[300px]"
+            >
+              <InputNumber
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                addonAfter="%"
+              />
             </Form.Item>
           </fieldset>
           <Flex justify="center" gap="large">

@@ -223,7 +223,7 @@ const StudyPermitExtension = () => {
               <Button
                 icon={<UploadOutlined />}
                 iconPosition="end"
-                className="w-[300px] mb-1"
+                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
               >
                 Select File
               </Button>
@@ -249,7 +249,7 @@ const StudyPermitExtension = () => {
                 name="Study_Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
-                className="w-full sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px]"
                 // rules={[
                 //   { required: true, message: "Kindly upload Study Permit!" },
                 // ]}

@@ -50,32 +50,35 @@ const VisitorStudies = () => {
             <Form.Item
               label="counselling id"
               name="counselling_id"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
               //     { required: true, message: "Kindly input counselling id!" },
               //   ]}
             >
-              <Input className="w-[200px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
-            <Form.Item label="Case Type" name="Case_Type" className="w-[200px]">
-              <Select placeholder="Choose" className="w-[200px]" />
+            <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
+              <Select
+                placeholder="Choose"
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
               name="Counselling_Name"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
               //     { required: true, message: "Kindly input Counselling Name!" },
               //   ]}
             >
-              <Input className="w-[200px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
           </div>
           <Form.Item
             name="Profile_Details"
             valuePropName="checked"
             layout="horizontal"
-            className="justify-self-start md:self-center"
+            className="justify-self-start md:self-center w-[300px]"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
@@ -212,15 +215,7 @@ const VisitorStudies = () => {
             <legend className="font-bold" style={{ color: "#000" }}>
               Visitor To Study
             </legend>
-            <Form.Item
-              name="IELTS"
-              label="IELTS"
-              layout="horizontal"
-              colon={false}
-              labelAlign="left"
-              labelCol={{ span: 3 }}
-              wrapperCol={{ span: 4 }}
-            >
+            <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
                 <Radio value="no">No</Radio>
@@ -229,11 +224,7 @@ const VisitorStudies = () => {
             <Form.Item
               name="TRF"
               label="TRF"
-              layout="horizontal"
-              colon={false}
-              labelAlign="left"
-              labelCol={{ span: 3 }}
-              wrapperCol={{ span: 6 }}
+              className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
               //   rules={[{ required: true, message: "Kindly upload TRF!" }]}
@@ -242,14 +233,14 @@ const VisitorStudies = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[200px] mb-1"
+                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
                 >
                   Select File
                 </Button>
               </Upload>
             </Form.Item>
           </fieldset>
-          <fieldset className="w-[864px]">
+          <fieldset>
             <legend
               className="font-bold"
               style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
@@ -296,7 +287,7 @@ const VisitorStudies = () => {
                           // rules={[
                           //   {
                           //     required: true,
-                          //     message: "Missing first name",
+                          //     message: "Missing Reading",
                           //   },
                           // ]}
                         >
@@ -309,7 +300,7 @@ const VisitorStudies = () => {
                           // rules={[
                           //   {
                           //     required: true,
-                          //     message: "Missing first name",
+                          //     message: "Missing Listening",
                           //   },
                           // ]}
                         >
@@ -322,7 +313,7 @@ const VisitorStudies = () => {
                           // rules={[
                           //   {
                           //     required: true,
-                          //     message: "Missing first name",
+                          //     message: "Missing Speaking",
                           //   },
                           // ]}
                         >
@@ -335,7 +326,7 @@ const VisitorStudies = () => {
                           // rules={[
                           //   {
                           //     required: true,
-                          //     message: "Missing last name",
+                          //     message: "Missing Writing",
                           //   },
                           // ]}
                         >
@@ -364,42 +355,45 @@ const VisitorStudies = () => {
             <Form.Item
               label="Preferred College"
               name="Preferred_College"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
-              //     { required: true, message: "Kindly input counselling id!" },
+              //     { required: true, message: "Kindly input Preferred College!" },
               //   ]}
             >
-              <Input className="w-[200px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
             <Form.Item
               label="Location"
               name="Location"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
-              //     { required: true, message: "Kindly input counselling id!" },
+              //     { required: true, message: "Kindly input Location!" },
               //   ]}
             >
-              <Input className="w-[200px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
             <Form.Item
               label="Program"
               name="Program"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
-              //     { required: true, message: "Kindly input counselling id!" },
+              //     { required: true, message: "Kindly input Program!" },
               //   ]}
             >
-              <Input className="w-[200px]" />
+              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
             <Form.Item
               label="intake"
               name="intake"
-              className="w-[200px]"
+              className="w-[300px]"
               //   rules={[
-              //     { required: true, message: "Kindly input counselling id!" },
+              //     { required: true, message: "Kindly input intake!" },
               //   ]}
             >
-              <DatePicker format="DD-MMM-YYYY" className="w-[200px]" />
+              <DatePicker
+                format="DD-MMM-YYYY"
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
           </div>
           <fieldset>
@@ -410,7 +404,7 @@ const VisitorStudies = () => {
               name="TRF1"
               valuePropName="checked"
               layout="horizontal"
-              className="justify-self-start md:self-center"
+              className="justify-self-start md:self-center w-[300px]"
             >
               <Checkbox>TRF</Checkbox>
             </Form.Item>
