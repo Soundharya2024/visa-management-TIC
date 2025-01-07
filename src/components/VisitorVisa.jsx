@@ -1038,7 +1038,7 @@ const VisitorVisa = () => {
               >
                 Travel History
               </legend>
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto w-max">
                 <Space
                   style={{
                     display: "flex",
@@ -1166,7 +1166,7 @@ const VisitorVisa = () => {
               >
                 Refusal History
               </legend>
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto w-max">
                 <Space
                   style={{
                     display: "flex",

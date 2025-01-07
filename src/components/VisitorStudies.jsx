@@ -86,7 +86,7 @@ const VisitorStudies = () => {
             >
               Education Details
             </legend>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-max">
               <Space
                 style={{
                   display: "flex",
@@ -256,107 +256,109 @@ const VisitorStudies = () => {
             >
               IELTS Details
             </legend>
-            <Space
-              style={{
-                display: "flex",
-                marginBottom: 15,
-              }}
-              className="border-t border-b w-max py-2 bg-zinc-50"
-              align="baseline"
-            >
-              <div className="w-[32px]"></div>
-              <div className="font-semibold w-[200px]">Reading</div>
-              <div className="font-semibold w-[200px]">Listening</div>
-              <div className="font-semibold w-[200px]">Speaking</div>
-              <div className="font-semibold w-[200px]">Writing</div>
-            </Space>
-            <Form.List name="Ilets_Details">
-              {(fields, { add, remove }) => (
-                <>
-                  {fields.map(({ key, name, ...restField }) => (
-                    <Space
-                      key={key}
-                      className="last: mb-0"
-                      style={{
-                        display: "flex",
-                      }}
-                      align="baseline"
+            <div className="overflow-x-auto w-max">
+              <Space
+                style={{
+                  display: "flex",
+                  marginBottom: 15,
+                }}
+                className="border-t border-b w-max py-2 bg-zinc-50"
+                align="baseline"
+              >
+                <div className="w-[32px]"></div>
+                <div className="font-semibold w-[200px]">Reading</div>
+                <div className="font-semibold w-[200px]">Listening</div>
+                <div className="font-semibold w-[200px]">Speaking</div>
+                <div className="font-semibold w-[200px]">Writing</div>
+              </Space>
+              <Form.List name="Ilets_Details">
+                {(fields, { add, remove }) => (
+                  <>
+                    {fields.map(({ key, name, ...restField }) => (
+                      <Space
+                        key={key}
+                        className="last: mb-0"
+                        style={{
+                          display: "flex",
+                        }}
+                        align="baseline"
+                      >
+                        <Button
+                          type="link"
+                          icon={<CloseOutlined />}
+                          danger
+                          onClick={() => remove(name)}
+                        />
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Reading"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Listening"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Speaking"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing first name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Writing"]}
+                          className="w-[200px]"
+                          // rules={[
+                          //   {
+                          //     required: true,
+                          //     message: "Missing last name",
+                          //   },
+                          // ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                      </Space>
+                    ))}
+                    {fields.length === 0 ? "" : <Divider className="m-0" />}
+                    <Form.Item
+                      className={fields.length === 0 ? "text-center" : ""}
                     >
                       <Button
                         type="link"
-                        icon={<CloseOutlined />}
-                        danger
-                        onClick={() => remove(name)}
-                      />
-                      <Form.Item
-                        {...restField}
-                        name={[name, "Reading"]}
-                        className="w-[200px]"
-                        // rules={[
-                        //   {
-                        //     required: true,
-                        //     message: "Missing first name",
-                        //   },
-                        // ]}
+                        onClick={() => add()}
+                        icon={<PlusOutlined />}
                       >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, "Listening"]}
-                        className="w-[200px]"
-                        // rules={[
-                        //   {
-                        //     required: true,
-                        //     message: "Missing first name",
-                        //   },
-                        // ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, "Speaking"]}
-                        className="w-[200px]"
-                        // rules={[
-                        //   {
-                        //     required: true,
-                        //     message: "Missing first name",
-                        //   },
-                        // ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, "Writing"]}
-                        className="w-[200px]"
-                        // rules={[
-                        //   {
-                        //     required: true,
-                        //     message: "Missing last name",
-                        //   },
-                        // ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </Space>
-                  ))}
-                  {fields.length === 0 ? "" : <Divider className="m-0" />}
-                  <Form.Item
-                    className={fields.length === 0 ? "text-center" : ""}
-                  >
-                    <Button
-                      type="link"
-                      onClick={() => add()}
-                      icon={<PlusOutlined />}
-                    >
-                      Add New
-                    </Button>
-                  </Form.Item>
-                </>
-              )}
-            </Form.List>
+                        Add New
+                      </Button>
+                    </Form.Item>
+                  </>
+                )}
+              </Form.List>
+            </div>
           </fieldset>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
             <Form.Item

@@ -87,7 +87,7 @@ const StudyPermitExtension = () => {
             >
               Education Details
             </legend>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-max">
               <Space
                 style={{
                   display: "flex",
