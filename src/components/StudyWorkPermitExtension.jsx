@@ -69,7 +69,7 @@ const StudyWorkPermitExtension = () => {
             name="Profile_Details"
             valuePropName="checked"
             layout="horizontal"
-            className="justify-self-start md:self-center w-[300px]"
+            className="w-[300px]"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
