@@ -155,6 +155,7 @@ const StudyPermitExtension = () => {
                         type="link"
                         onClick={() => add()}
                         icon={<PlusOutlined />}
+                        className="visited:text-current"
                       >
                         Add New
                       </Button>
