@@ -461,6 +461,7 @@ const StudyVisa = () => {
                           icon={<CloseOutlined />}
                           danger
                           onClick={() => remove(name)}
+                          className="mb-7"
                         />
                         <Form.Item
                           {...restField}

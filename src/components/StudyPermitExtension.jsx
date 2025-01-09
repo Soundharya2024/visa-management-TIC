@@ -103,6 +103,7 @@ const StudyPermitExtension = () => {
                           icon={<CloseOutlined />}
                           danger
                           onClick={() => remove(name)}
+                          className="mb-7"
                         />
                         <Form.Item
                           {...restField}
@@ -155,7 +156,6 @@ const StudyPermitExtension = () => {
                         type="link"
                         onClick={() => add()}
                         icon={<PlusOutlined />}
-                        className="visited:text-current"
                       >
                         Add New
                       </Button>
