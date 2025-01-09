@@ -212,7 +212,7 @@ const USA = () => {
               </Upload>
             </Form.Item>
           </div>
-          <Flex className="w-[300px] sm:w-full">
+          <Flex className="w-[300px] sm:w-full overflow-x-auto">
             <Form.Item
               name="Embassy_Fee"
               label={<label className="font-semibold">Embassy Fee</label>}
@@ -294,7 +294,7 @@ const USA = () => {
               <Form.Item
                 label="Offer Letter Payment Details"
                 name="Offer_Letter_Payment_Details"
-                className="w-[200px]] sm:w-[300px]"
+                className="w-[200px] sm:w-[300px]"
               >
                 <Select
                   placeholder="Choose"
