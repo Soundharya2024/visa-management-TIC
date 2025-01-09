@@ -12,7 +12,7 @@ import WorkVisa from "./components/WorkVisa";
 const App = () => {
   return (
     <>
-      <WorkPermitExtension />
+      <WorkVisa />
     </>
   );
 };
