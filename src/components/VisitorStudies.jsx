@@ -51,9 +51,6 @@ const VisitorStudies = () => {
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input counselling id!" },
-              //   ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -67,9 +64,6 @@ const VisitorStudies = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input Counselling Name!" },
-              //   ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -127,12 +121,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Class"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -140,12 +128,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "College_Name"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -153,12 +135,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Board_University"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -166,12 +142,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Year_field"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <DatePicker
                             picker="year"
@@ -183,12 +153,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Marks"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <InputNumber addonAfter="%" />
                         </Form.Item>
@@ -227,7 +191,6 @@ const VisitorStudies = () => {
               className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
-              //   rules={[{ required: true, message: "Kindly upload TRF!" }]}
             >
               <Upload name="TRF" maxCount={1}>
                 <Button
@@ -284,12 +247,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Reading"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing Reading",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -297,12 +254,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Listening"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing Listening",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -310,12 +261,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Speaking"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing Speaking",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -323,12 +268,6 @@ const VisitorStudies = () => {
                           {...restField}
                           name={[name, "Writing"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing Writing",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -356,40 +295,16 @@ const VisitorStudies = () => {
               label="Preferred College"
               name="Preferred_College"
               className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input Preferred College!" },
-              //   ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
-            <Form.Item
-              label="Location"
-              name="Location"
-              className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input Location!" },
-              //   ]}
-            >
+            <Form.Item label="Location" name="Location" className="w-[300px]">
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
-            <Form.Item
-              label="Program"
-              name="Program"
-              className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input Program!" },
-              //   ]}
-            >
+            <Form.Item label="Program" name="Program" className="w-[300px]">
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
-            <Form.Item
-              label="intake"
-              name="intake"
-              className="w-[300px]"
-              //   rules={[
-              //     { required: true, message: "Kindly input intake!" },
-              //   ]}
-            >
+            <Form.Item label="intake" name="intake" className="w-[300px]">
               <DatePicker
                 format="DD-MMM-YYYY"
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"

@@ -84,7 +84,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[{ required: true, message: "Kindly upload TRF!" }]}
               >
                 <Upload name="Passport_Upload" maxCount={1}>
                   <Button
@@ -108,7 +107,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[{ required: true, message: "Kindly upload TRF!" }]}
               >
                 <Upload name="TRF" maxCount={1}>
                   <Button
@@ -186,12 +184,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your 10th Document!",
-                //   },
-                // ]}
               >
                 <Upload name="th1" maxCount={1}>
                   <Button
@@ -209,12 +201,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your 12th Document!",
-                //   },
-                // ]}
               >
                 <Upload name="th" maxCount={1}>
                   <Button
@@ -232,12 +218,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Diploma Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Diploma" maxCount={1}>
                   <Button
@@ -255,12 +235,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Masters Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Masters" maxCount={1}>
                   <Button
@@ -278,12 +252,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Bachelors Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Bachelors" maxCount={1}>
                   <Button
@@ -310,12 +278,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Spouse Passport Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Spouse_Passport" maxCount={1}>
                   <Button
@@ -333,12 +295,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your 3 Pay Slips Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Pay_Slips" maxCount={1}>
                   <Button
@@ -356,13 +312,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message:
-                //       "Kindly upload your Account Summary and Balance Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Account_Balance" maxCount={1}>
                   <Button
@@ -380,12 +329,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Work Permit Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Work_Permit" maxCount={1}>
                   <Button
@@ -403,13 +346,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message:
-                //       "Kindly upload your Job Letter / Appointment Letter!",
-                //   },
-                // ]}
               >
                 <Upload name="Job_Letter_Appointment_Letter" maxCount={1}>
                   <Button
@@ -427,12 +363,6 @@ const StudyVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Chat and call History!",
-                //   },
-                // ]}
               >
                 <Upload name="Chat_and_call_History" maxCount={1}>
                   <Button
@@ -455,12 +385,6 @@ const StudyVisa = () => {
                 label="Any Previous Refusal"
                 name="Any_Previous_Refusal"
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly input information on Any Previous Refusal!",
-                //   },
-                // ]}
               >
                 <Input className="sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
@@ -468,12 +392,6 @@ const StudyVisa = () => {
                 label="Backlog"
                 name="Backlog"
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly input information on Backlog!",
-                //   },
-                // ]}
               >
                 <TextArea
                   maxLength={100}
@@ -488,13 +406,6 @@ const StudyVisa = () => {
                 label="Any Specific preference for College, Program or Campus"
                 name="Any_Specific_preference_for_College_Program_or_Campus"
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message:
-                //       "Kindly input information on Any Specific preference for College, Program or Campus!",
-                //   },
-                // ]}
               >
                 <TextArea
                   maxLength={100}
@@ -510,12 +421,6 @@ const StudyVisa = () => {
                 name="Gap_Justification"
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 labelCol={{ style: { height: 52 } }}
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly input information on Gap Justification!",
-                //   },
-                // ]}
               >
                 <TextArea
                   maxLength={100}
@@ -573,12 +478,6 @@ const StudyVisa = () => {
                           {...restField}
                           name={[name, "Class"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -586,12 +485,6 @@ const StudyVisa = () => {
                           {...restField}
                           name={[name, "College_Name"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -599,12 +492,6 @@ const StudyVisa = () => {
                           {...restField}
                           name={[name, "Board_University"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -612,12 +499,6 @@ const StudyVisa = () => {
                           {...restField}
                           name={[name, "Year_field"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <DatePicker
                             picker="year"
@@ -629,12 +510,6 @@ const StudyVisa = () => {
                           {...restField}
                           name={[name, "Marks"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <InputNumber addonAfter="%" />
                         </Form.Item>

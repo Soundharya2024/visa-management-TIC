@@ -123,12 +123,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Passport!",
-                //   },
-                // ]}
               >
                 <Upload name="Passport" maxCount={1}>
                   <Button
@@ -146,12 +140,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Digital Photo!",
-                //   },
-                // ]}
               >
                 <Upload
                   name="Digital_Photo"
@@ -180,12 +168,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Marriage Certificate!",
-                //   },
-                // ]}
               >
                 <Upload name="Marriage_Certificate" maxCount={1}>
                   <Button
@@ -203,12 +185,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Marriage Photos!",
-                //   },
-                // ]}
               >
                 <Upload name="Marriage_Photo" maxCount={1}>
                   <Button
@@ -233,12 +209,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Education Documents!",
-                //   },
-                // ]}
               >
                 <Upload name="Education_Details" maxCount={1}>
                   <Button
@@ -256,12 +226,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Job Letter!",
-                //   },
-                // ]}
               >
                 <Upload name="Job_Letter" maxCount={1}>
                   <Button
@@ -279,12 +243,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload ITR!",
-                //   },
-                // ]}
               >
                 <Upload name="ITR1" maxCount={1}>
                   <Button
@@ -302,12 +260,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Bank Statment!",
-                //   },
-                // ]}
               >
                 <Upload name="Bank_Statment" maxCount={1}>
                   <Button
@@ -325,12 +277,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Salary Slips!",
-                //   },
-                // ]}
               >
                 <Upload name="Sallary" maxCount={1}>
                   <Button
@@ -380,12 +326,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Passport!",
-                //   },
-                // ]}
               >
                 <Upload name="Sponsor_Passport" maxCount={1}>
                   <Button
@@ -409,12 +349,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Fees Receipt!",
-                //   },
-                // ]}
               >
                 <Upload name="Lie" maxCount={1}>
                   <Button
@@ -432,12 +366,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload LOA Document!",
-                //   },
-                // ]}
               >
                 <Upload name="LOA" maxCount={1}>
                   <Button
@@ -455,12 +383,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Enrollment Letter Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Enrollment_Completion_Letter" maxCount={1}>
                   <Button
@@ -478,12 +400,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload GIC Certificate Document!",
-                //   },
-                // ]}
               >
                 <Upload name="GIC_certi" maxCount={1}>
                   <Button
@@ -501,12 +417,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Visa Copy Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Visa_Copy" maxCount={1}>
                   <Button
@@ -524,12 +434,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Study Permit Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button
@@ -547,12 +451,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Chat History Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Chat_History" maxCount={1}>
                   <Button
@@ -570,12 +468,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload GIC Account Summary!",
-                //   },
-                // ]}
               >
                 <Upload name="GIC" maxCount={1}>
                   <Button
@@ -593,12 +485,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Video Call History Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Video_Call_History" maxCount={1}>
                   <Button
@@ -616,12 +502,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Call History Document!",
-                //   },
-                // ]}
               >
                 <Upload name="call_History" maxCount={1}>
                   <Button
@@ -639,12 +519,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Work permit Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Work_permit" maxCount={1}>
                   <Button
@@ -662,12 +536,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Job Letter / Appointment Letter!",
-                //   },
-                // ]}
               >
                 <Upload name="Job_Letter_Appointment_Letter" maxCount={1}>
                   <Button
@@ -685,12 +553,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your 3 month Pay Slips!",
-                //   },
-                // ]}
               >
                 <Upload name="month_Pay_Slips" maxCount={1}>
                   <Button
@@ -708,12 +570,6 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Account Summary Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Account_Balan" maxCount={1}>
                   <Button

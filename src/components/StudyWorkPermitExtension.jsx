@@ -42,9 +42,6 @@ const StudyWorkPermitExtension = () => {
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input counselling id!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -58,9 +55,6 @@ const StudyWorkPermitExtension = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input Counselling Name!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -91,12 +85,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Study Permit Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button
@@ -114,12 +102,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Passport and Visa Documents!",
-                //   },
-                // ]}
               >
                 <Upload name="Passport_Visa" maxCount={1}>
                   <Button
@@ -137,12 +119,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Medical Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Medical" maxCount={1}>
                   <Button
@@ -160,12 +136,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload File!",
-                //   },
-                // ]}
               >
                 <Upload name="File_upload" maxCount={1}>
                   <Button
@@ -183,12 +153,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Digital Photo!",
-                //   },
-                // ]}
               >
                 <Upload
                   name="Digital_Photo"
@@ -217,12 +181,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload New LOA And 2 Pay Slips!",
-                //   },
-                // ]}
               >
                 <Upload name="New_Loa_And_2_Pay_Slips" maxCount={1}>
                   <Button
@@ -240,12 +198,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Enrollment / Completion Letter!",
-                //   },
-                // ]}
               >
                 <Upload name="Enrollment_Completion_Letter" maxCount={1}>
                   <Button
@@ -263,12 +215,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload your Study Permit Document!",
-                //   },
-                // ]}
               >
                 <Upload name="Study_Permit1" maxCount={1}>
                   <Button
@@ -286,12 +232,6 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   {
-                //     required: true,
-                //     message: "Kindly upload Marriage Certificate!",
-                //   },
-                // ]}
               >
                 <Upload name="Marriage_Certificate" maxCount={1}>
                   <Button

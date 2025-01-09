@@ -707,12 +707,6 @@ const USA = () => {
                             {...restField}
                             name={[name, "Country_Name"]}
                             className="w-[200px]"
-                            // rules={[
-                            //   {
-                            //     required: true,
-                            //     message: "Missing Country Name",
-                            //   },
-                            // ]}
                           >
                             <Input />
                           </Form.Item>
@@ -720,12 +714,6 @@ const USA = () => {
                             {...restField}
                             name={[name, "Year_field"]}
                             className="w-[200px]"
-                            // rules={[
-                            //   {
-                            //     required: true,
-                            //     message: "Missing year",
-                            //   },
-                            // ]}
                           >
                             <DatePicker
                               format="DD-MMM-YYYY"

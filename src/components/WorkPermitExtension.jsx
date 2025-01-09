@@ -23,9 +23,6 @@ const WorkPermitExtension = () => {
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input counselling id!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -39,9 +36,6 @@ const WorkPermitExtension = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input Counselling Name!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>

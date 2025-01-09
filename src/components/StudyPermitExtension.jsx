@@ -49,9 +49,6 @@ const StudyPermitExtension = () => {
               label="counselling id"
               name="counselling_id"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input counselling id!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -65,9 +62,6 @@ const StudyPermitExtension = () => {
               label="Counselling Name"
               name="Counselling_Name"
               className="w-[300px]"
-              // rules={[
-              //   { required: true, message: "Kindly input Counselling Name!" },
-              // ]}
             >
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
@@ -124,12 +118,6 @@ const StudyPermitExtension = () => {
                           {...restField}
                           name={[name, "Class"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -137,12 +125,6 @@ const StudyPermitExtension = () => {
                           {...restField}
                           name={[name, "College_Name"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -150,12 +132,6 @@ const StudyPermitExtension = () => {
                           {...restField}
                           name={[name, "Board_University"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing first name",
-                          //   },
-                          // ]}
                         >
                           <Input />
                         </Form.Item>
@@ -163,12 +139,6 @@ const StudyPermitExtension = () => {
                           {...restField}
                           name={[name, "Year_field"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <DatePicker
                             picker="year"
@@ -180,12 +150,6 @@ const StudyPermitExtension = () => {
                           {...restField}
                           name={[name, "Marks"]}
                           className="w-[200px]"
-                          // rules={[
-                          //   {
-                          //     required: true,
-                          //     message: "Missing last name",
-                          //   },
-                          // ]}
                         >
                           <InputNumber addonAfter="%" />
                         </Form.Item>
@@ -214,9 +178,6 @@ const StudyPermitExtension = () => {
             valuePropName="file"
             getValueFromEvent={getFile}
             className="w-[300px]"
-            // rules={[
-            //   { required: true, message: "Kindly upload Medical Certificate!" },
-            // ]}
           >
             <Upload name="Medical_Certificate" maxCount={1}>
               <Button
@@ -249,9 +210,6 @@ const StudyPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
-                // rules={[
-                //   { required: true, message: "Kindly upload Study Permit!" },
-                // ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button
