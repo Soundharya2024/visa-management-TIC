@@ -254,7 +254,7 @@ const USA = () => {
               <Form.Item
                 label="Sevis Payment Details"
                 name="Sevis_Payment_Details"
-                className="w-[300px]"
+                className="w-[200px] sm:w-[300px]"
               >
                 <Select
                   placeholder="Choose"
@@ -274,7 +274,7 @@ const USA = () => {
               <Form.Item
                 label="DS160 Payment Details"
                 name="DS160_Payment_Details"
-                className="w-[300px]"
+                className="w-[200px] sm:w-[300px]"
               >
                 <Select
                   placeholder="Choose"
@@ -294,7 +294,7 @@ const USA = () => {
               <Form.Item
                 label="Offer Letter Payment Details"
                 name="Offer_Letter_Payment_Details"
-                className="w-[300px]"
+                className="w-[200px]] sm:w-[300px]"
               >
                 <Select
                   placeholder="Choose"
