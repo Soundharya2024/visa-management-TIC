@@ -74,19 +74,12 @@ const StudyPermitExtension = () => {
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
           <fieldset>
-            <legend
-              className="font-bold"
-              style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
-            >
+            <legend className="font-bold !text-black !border-b-0 !mb-2">
               Education Details
             </legend>
             <div className="overflow-x-auto w-max">
               <Space
-                style={{
-                  display: "flex",
-                  marginBottom: 15,
-                }}
-                className="border-t border-b w-max py-2 bg-zinc-50"
+                className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
               >
                 <div className="w-[32px]"></div>
@@ -102,10 +95,7 @@ const StudyPermitExtension = () => {
                     {fields.map(({ key, name, ...restField }) => (
                       <Space
                         key={key}
-                        className="last: mb-0"
-                        style={{
-                          display: "flex",
-                        }}
+                        className="last: mb-0 !flex"
                         align="baseline"
                       >
                         <Button
@@ -190,9 +180,7 @@ const StudyPermitExtension = () => {
             </Upload>
           </Form.Item>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Visa Chances
-            </legend>
+            <legend className="font-bold !text-black">Visa Chances</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 label="Visa Chances"
@@ -224,9 +212,7 @@ const StudyPermitExtension = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Check List
-            </legend>
+            <legend className="font-bold !text-black">Check List</legend>
             <Form.Item
               name="Medical_Certificate1"
               valuePropName="checked"

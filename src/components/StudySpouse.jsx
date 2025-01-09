@@ -33,9 +33,7 @@ const StudySpouse = () => {
             </Form.Item>
           </div>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Visa Chances
-            </legend>
+            <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"

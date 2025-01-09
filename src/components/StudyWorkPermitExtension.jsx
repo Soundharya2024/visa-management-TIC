@@ -68,7 +68,7 @@ const StudyWorkPermitExtension = () => {
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Study + Work Extension
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -246,9 +246,7 @@ const StudyWorkPermitExtension = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Visa Chances
-            </legend>
+            <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"
@@ -261,9 +259,7 @@ const StudyWorkPermitExtension = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Check List
-            </legend>
+            <legend className="font-bold !text-black">Check List</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 justify-items-start">
               <Form.Item
                 name="Study_Permit2"

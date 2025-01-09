@@ -77,19 +77,12 @@ const VisitorStudies = () => {
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
           <fieldset>
-            <legend
-              className="font-bold"
-              style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
-            >
+            <legend className="font-bold !text-black !border-b-0 !mb-2">
               Education Details
             </legend>
             <div className="overflow-x-auto w-max">
               <Space
-                style={{
-                  display: "flex",
-                  marginBottom: 15,
-                }}
-                className="border-t border-b w-max py-2 bg-zinc-50"
+                className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
               >
                 <div className="w-[32px]"></div>
@@ -105,10 +98,7 @@ const VisitorStudies = () => {
                     {fields.map(({ key, name, ...restField }) => (
                       <Space
                         key={key}
-                        className="last: mb-0"
-                        style={{
-                          display: "flex",
-                        }}
+                        className="last: mb-0 !flex"
                         align="baseline"
                       >
                         <Button
@@ -176,9 +166,7 @@ const VisitorStudies = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Visitor To Study
-            </legend>
+            <legend className="font-bold !text-black">Visitor To Study</legend>
             <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -204,19 +192,12 @@ const VisitorStudies = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend
-              className="font-bold"
-              style={{ color: "#000", borderBottom: 0, marginBottom: "0.5rem" }}
-            >
+            <legend className="font-bold !text-black !border-b-0 !mb-2">
               IELTS Details
             </legend>
             <div className="overflow-x-auto w-max">
               <Space
-                style={{
-                  display: "flex",
-                  marginBottom: 15,
-                }}
-                className="border-t border-b w-max py-2 bg-zinc-50"
+                className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
               >
                 <div className="w-[32px]"></div>
@@ -231,10 +212,7 @@ const VisitorStudies = () => {
                     {fields.map(({ key, name, ...restField }) => (
                       <Space
                         key={key}
-                        className="last: mb-0"
-                        style={{
-                          display: "flex",
-                        }}
+                        className="last: mb-0 !flex"
                         align="baseline"
                       >
                         <Button
@@ -312,9 +290,7 @@ const VisitorStudies = () => {
             </Form.Item>
           </div>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Check List
-            </legend>
+            <legend className="font-bold !text-black">Check List</legend>
             <Form.Item
               name="TRF1"
               valuePropName="checked"

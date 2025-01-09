@@ -50,7 +50,7 @@ const WorkVisa = () => {
             </Form.Item>
           </div>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Necessary Information For Work Permit
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -113,9 +113,7 @@ const WorkVisa = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Documents
-            </legend>
+            <legend className="font-bold !text-black">Documents</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 name="Passport"
@@ -199,7 +197,7 @@ const WorkVisa = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Applicant Documents
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -291,9 +289,7 @@ const WorkVisa = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Sponsor
-            </legend>
+            <legend className="font-bold !text-black">Sponsor</legend>
             <Form.Item
               name="If_field"
               label="Sponsor's Country"
@@ -306,7 +302,7 @@ const WorkVisa = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Compulsory Question
             </legend>
             <Form.Item
@@ -584,9 +580,7 @@ const WorkVisa = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Visa Chances
-            </legend>
+            <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"

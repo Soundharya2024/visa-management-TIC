@@ -454,9 +454,7 @@ const USA = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Marital Status
-            </legend>
+            <legend className="font-bold !text-black">Marital Status</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 label="Spouse Name"
@@ -488,7 +486,7 @@ const USA = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Occupation Details
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -536,7 +534,7 @@ const USA = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Previous Employment
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -644,9 +642,7 @@ const USA = () => {
             </div>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Language Details
-            </legend>
+            <legend className="font-bold !text-black">Language Details</legend>
             <Form.Item
               label="List of languages you speak"
               name="List_of_languages_you_speak"
@@ -674,11 +670,7 @@ const USA = () => {
               </legend>
               <div className="overflow-x-auto w-max">
                 <Space
-                  style={{
-                    display: "flex",
-                    marginBottom: 15,
-                  }}
-                  className="border-t border-b w-max py-2 bg-zinc-50"
+                  className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                   align="baseline"
                 >
                   <div className="w-[32px]"></div>
@@ -691,10 +683,7 @@ const USA = () => {
                       {fields.map(({ key, name, ...restField }) => (
                         <Space
                           key={key}
-                          className="last: mb-0"
-                          style={{
-                            display: "flex",
-                          }}
+                          className="last: mb-0 !flex"
                           align="baseline"
                         >
                           <Button
@@ -741,9 +730,7 @@ const USA = () => {
             </fieldset>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
-              Health Details
-            </legend>
+            <legend className="font-bold !text-black">Health Details</legend>
             <Form.Item
               name="Do_you_have_any_health_issues"
               label="Do you have any health issues?"
@@ -770,7 +757,7 @@ const USA = () => {
             </Form.Item>
           </fieldset>
           <fieldset>
-            <legend className="font-bold" style={{ color: "#000" }}>
+            <legend className="font-bold !text-black">
               Additional Details
             </legend>
             <Form.Item
