@@ -43,7 +43,10 @@ const StudyWorkPermitExtension = () => {
               name="counselling_id"
               className="w-[300px]"
             >
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
               <Select
@@ -56,7 +59,10 @@ const StudyWorkPermitExtension = () => {
               name="Counselling_Name"
               className="w-[300px]"
             >
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
           </div>
           <Form.Item
@@ -77,7 +83,10 @@ const StudyWorkPermitExtension = () => {
                 name="Study_work_extension1"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 name="Study_Permit"
@@ -284,7 +293,7 @@ const StudyWorkPermitExtension = () => {
                 colon={false}
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[200px]" />
+                <Input maxLength={255} className="sm:max-w-[200px]" />
               </Form.Item>
               <Form.Item
                 name="File_upload1"

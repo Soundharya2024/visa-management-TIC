@@ -55,10 +55,14 @@ const WorkVisa = () => {
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item label="Name" name="Name1" className="w-[300px]">
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item label="Age" name="Age" className="w-[300px]">
                 <InputNumber
+                  max={150}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   placeholder="#######"
                 />
@@ -68,7 +72,10 @@ const WorkVisa = () => {
                 name="Occupation"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Salary Or Monthly Income"
@@ -309,6 +316,12 @@ const WorkVisa = () => {
               name="Any_previous_travel_history"
               label="Any previous travel history"
               className="w-[300px]"
+              rules={[
+                {
+                  required: true,
+                  message: "Kindly input if any previous travel history!",
+                },
+              ]}
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>

@@ -384,7 +384,10 @@ const StudyVisa = () => {
                 name="Any_Previous_Refusal"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Backlog"
@@ -394,7 +397,7 @@ const StudyVisa = () => {
                 <TextArea
                   maxLength={100}
                   style={{
-                    height: 120,
+                    height: 100,
                     resize: "none",
                   }}
                   className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -408,7 +411,7 @@ const StudyVisa = () => {
                 <TextArea
                   maxLength={100}
                   style={{
-                    height: 120,
+                    height: 100,
                     resize: "none",
                   }}
                   className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -423,7 +426,7 @@ const StudyVisa = () => {
                 <TextArea
                   maxLength={100}
                   style={{
-                    height: 120,
+                    height: 100,
                     resize: "none",
                   }}
                   className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -468,21 +471,21 @@ const StudyVisa = () => {
                           name={[name, "Class"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "College_Name"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "Board_University"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
@@ -500,7 +503,12 @@ const StudyVisa = () => {
                           name={[name, "Marks"]}
                           className="w-[200px]"
                         >
-                          <InputNumber addonAfter="%" />
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            step={0.01}
+                            addonAfter="%"
+                          />
                         </Form.Item>
                       </Space>
                     ))}

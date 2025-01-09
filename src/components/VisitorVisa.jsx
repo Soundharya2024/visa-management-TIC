@@ -78,7 +78,11 @@ const VisitorVisa = () => {
                 />
               </Form.Item>
               <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
-                <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+                <InputNumber
+                  stringMode
+                  maxLength={10}
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 name="Email"
@@ -87,6 +91,7 @@ const VisitorVisa = () => {
                 className="w-[300px]"
               >
                 <Input
+                  maxLength={80}
                   addonAfter={<MailOutlined />}
                   className="sm:max-w-[260px] md:max-w-[300px]"
                 />
@@ -116,7 +121,10 @@ const VisitorVisa = () => {
                 name="GC_Key_Username"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
           </fieldset>
@@ -150,7 +158,7 @@ const VisitorVisa = () => {
                 <TextArea
                   maxLength={100}
                   style={{
-                    height: 120,
+                    height: 100,
                     resize: "none",
                   }}
                   className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -163,6 +171,7 @@ const VisitorVisa = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item label="Age" name="Age" className="w-[300px]">
                 <InputNumber
+                  max={150}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   placeholder="#######"
                 />
@@ -201,7 +210,10 @@ const VisitorVisa = () => {
                 label="Name Of Sponsor"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Number of Applicants"
@@ -227,7 +239,10 @@ const VisitorVisa = () => {
                 name="Reason_Of_Visit"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
           </fieldset>
@@ -419,7 +434,10 @@ const VisitorVisa = () => {
                 name="Current_Address"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 name="Work_permit"
@@ -816,6 +834,12 @@ const VisitorVisa = () => {
               name="Any_previous_travel_history"
               label="Any previous travel history"
               className="w-[300px]"
+              rules={[
+                {
+                  required: true,
+                  message: "Kindly input if any previous travel history!",
+                },
+              ]}
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -857,7 +881,7 @@ const VisitorVisa = () => {
                             name={[name, "Country_Name"]}
                             className="w-[200px]"
                           >
-                            <Input />
+                            <Input maxLength={255} />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -874,7 +898,7 @@ const VisitorVisa = () => {
                             name={[name, "Duration"]}
                             className="w-[200px]"
                           >
-                            <Input />
+                            <Input maxLength={255} />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -948,7 +972,7 @@ const VisitorVisa = () => {
                             name={[name, "Country_Name"]}
                             className="w-[200px]"
                           >
-                            <Input />
+                            <Input maxLength={255} />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -1006,7 +1030,7 @@ const VisitorVisa = () => {
               <TextArea
                 maxLength={100}
                 style={{
-                  height: 120,
+                  height: 100,
                   resize: "none",
                 }}
                 className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -1050,19 +1074,34 @@ const VisitorVisa = () => {
               />
             </Form.Item>
             <Form.Item label="Reading" name="Reading" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Listening" name="Listining" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Writing" name="Writing" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Speaking" name="Speaking" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Overall" name="Overall" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item
               name="Do_you_Depend_On_someone"

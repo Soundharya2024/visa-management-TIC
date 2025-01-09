@@ -77,7 +77,11 @@ const USA = () => {
               />
             </Form.Item>
             <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
-              <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+              <InputNumber
+                stringMode
+                maxLength={10}
+                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item
               name="Email"
@@ -86,6 +90,7 @@ const USA = () => {
               className="w-[300px]"
             >
               <Input
+                maxLength={80}
                 addonAfter={<MailOutlined />}
                 className="sm:max-w-[260px] md:max-w-[300px]"
               />
@@ -335,21 +340,30 @@ const USA = () => {
                 name="preferred_location_of_interview"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Instagram or Feedback Id (If Possible)"
                 name="Instagram_or_Feedback_Id_If_Possible"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Person Paying for your trip (Relationship with person)"
                 name="p"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 name="Have_You_Ever_Been_in_USA_or_Issued_any_USA_Visa"
@@ -372,20 +386,26 @@ const USA = () => {
                 name="Person_Or_Organization_Name"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Relationship to You"
                 name="Relationship_to_the_Sponser"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item label="Address" name="Address" className="w-[300px]">
                 <TextArea
                   maxLength={100}
                   style={{
-                    height: 120,
+                    height: 100,
                     resize: "none",
                   }}
                   className="sm:!max-w-[260px] md:!max-w-[300px]"
@@ -406,6 +426,7 @@ const USA = () => {
                   className="w-[300px]"
                 >
                   <Input
+                    maxLength={80}
                     addonAfter={<MailOutlined />}
                     className="sm:max-w-[260px] md:max-w-[300px]"
                   />
@@ -461,7 +482,10 @@ const USA = () => {
                 name="Spouse_Name"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item label="DOB" name="DOB" className="w-[300px]">
                 <DatePicker
@@ -474,14 +498,20 @@ const USA = () => {
                 name="City_Of_Birth"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Nationality"
                 name="Natiolity"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
           </fieldset>
@@ -495,21 +525,31 @@ const USA = () => {
                 name="Primary_Or_Current_ccupation"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Address Of School Or Work"
                 name="Address_Of_School_Or_Work"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Telephone Number"
                 name="Telephone_Number"
                 className="w-[300px]"
               >
-                <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+                <InputNumber
+                  stringMode
+                  maxLength={10}
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
             <Form.Item
@@ -543,24 +583,37 @@ const USA = () => {
                 name="Organization_Name"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item label="Address" name="Address1" className="w-[300px]">
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Phone Number"
                 name="Phone_Number2"
                 className="w-[300px]"
               >
-                <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+                <InputNumber
+                  stringMode
+                  maxLength={10}
+                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Job Title"
                 name="Job_Title"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Employment Starting Date"
@@ -587,7 +640,10 @@ const USA = () => {
                 name="Main_Duty"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
             <Form.Item
@@ -605,17 +661,26 @@ const USA = () => {
                 name="Provide_name_of_institution"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item label="Address" name="Address2" className="w-[300px]">
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 label="Course Of Study"
                 name="Course_Of_Study"
                 className="w-[300px]"
               >
-                <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[260px] md:max-w-[300px]"
+                />
               </Form.Item>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
@@ -697,7 +762,7 @@ const USA = () => {
                             name={[name, "Country_Name"]}
                             className="w-[200px]"
                           >
-                            <Input />
+                            <Input maxLength={255} />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -751,7 +816,7 @@ const USA = () => {
               <TextArea
                 maxLength={100}
                 style={{
-                  height: 120,
+                  height: 100,
                   resize: "none",
                 }}
                 className="sm:!max-w-[260px] md:!max-w-[300px]"

@@ -52,7 +52,10 @@ const VisitorStudies = () => {
               name="counselling_id"
               className="w-[300px]"
             >
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
               <Select
@@ -65,7 +68,10 @@ const VisitorStudies = () => {
               name="Counselling_Name"
               className="w-[300px]"
             >
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
           </div>
           <Form.Item
@@ -113,21 +119,21 @@ const VisitorStudies = () => {
                           name={[name, "Class"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "College_Name"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "Board_University"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
@@ -145,7 +151,12 @@ const VisitorStudies = () => {
                           name={[name, "Marks"]}
                           className="w-[200px]"
                         >
-                          <InputNumber addonAfter="%" />
+                          <InputNumber
+                            min={0}
+                            max={100}
+                            step={0.01}
+                            addonAfter="%"
+                          />
                         </Form.Item>
                       </Space>
                     ))}
@@ -229,28 +240,28 @@ const VisitorStudies = () => {
                           name={[name, "Reading"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "Listening"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "Speaking"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, "Writing"]}
                           className="w-[200px]"
                         >
-                          <Input />
+                          <Input maxLength={255} />
                         </Form.Item>
                       </Space>
                     ))}
@@ -279,13 +290,22 @@ const VisitorStudies = () => {
               name="Preferred_College"
               className="w-[300px]"
             >
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Location" name="Location" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Program" name="Program" className="w-[300px]">
-              <Input className="sm:max-w-[260px] md:max-w-[300px]" />
+              <Input
+                maxLength={255}
+                className="sm:max-w-[260px] md:max-w-[300px]"
+              />
             </Form.Item>
             <Form.Item label="Intake" name="intake" className="w-[300px]">
               <DatePicker
