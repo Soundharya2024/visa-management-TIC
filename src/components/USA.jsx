@@ -111,7 +111,7 @@ const USA = () => {
             </Form.Item>
             <Form.Item
               name="Aadhar_card"
-              label="Aadhaar card"
+              label="Aadhaar Card"
               valuePropName="file"
               getValueFromEvent={getFile}
               className="w-[300px]"
@@ -331,7 +331,7 @@ const USA = () => {
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
-                label="preferred location of interview?"
+                label="Preferred location of interview?"
                 name="preferred_location_of_interview"
                 className="w-[300px]"
               >
@@ -524,7 +524,7 @@ const USA = () => {
             </Form.Item>
             <Form.Item
               name="Previous_Employed1"
-              label="Previously Employed"
+              label="Experience"
               className="w-[300px]"
             >
               <Radio.Group>
@@ -535,7 +535,7 @@ const USA = () => {
           </fieldset>
           <fieldset>
             <legend className="font-bold !text-black">
-              Previous Employment
+              Experience Details
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item

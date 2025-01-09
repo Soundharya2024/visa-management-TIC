@@ -287,7 +287,7 @@ const VisitorStudies = () => {
             <Form.Item label="Program" name="Program" className="w-[300px]">
               <Input className="sm:max-w-[260px] md:max-w-[300px]" />
             </Form.Item>
-            <Form.Item label="intake" name="intake" className="w-[300px]">
+            <Form.Item label="Intake" name="intake" className="w-[300px]">
               <DatePicker
                 format="DD-MMM-YYYY"
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
