@@ -321,7 +321,7 @@ const USA = () => {
           >
             <Checkbox className="font-semibold">Choose</Checkbox>
           </Form.Item>
-          <p className="text-gray-600 text-xs mb-6">
+          <p className="text-gray-600 text-xs mb-6 w-[300px] sm:w-full">
             If Applicant want to Apply for Masters Degree then, education
             Assessment :-2500
           </p>
@@ -354,6 +354,7 @@ const USA = () => {
               <Form.Item
                 name="Have_You_Ever_Been_in_USA_or_Issued_any_USA_Visa"
                 label="Have You Ever Been in USA or Issued any USA Visa?"
+                className="w-[300px] sm:w-full"
               >
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
@@ -593,6 +594,7 @@ const USA = () => {
             <Form.Item
               name="Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
               label="Have you ever Attended any Educational institution at secondary level or above?"
+              className="w-[300px] sm:w-full"
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -658,6 +660,7 @@ const USA = () => {
             <Form.Item
               name="Have_you_travel_to_any_country_within_last_five_years"
               label="Have you traveled to any country within last five years?"
+              className="w-[300px] sm:w-full"
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
