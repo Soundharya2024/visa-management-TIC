@@ -177,7 +177,7 @@ const StudyWorkPermitExtension = () => {
               </Form.Item>
               <Form.Item
                 name="New_Loa_And_2_Pay_Slips"
-                label="New LOA And 2 Pay Slips"
+                label="New Loa And 2 Pay Slips"
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
@@ -308,7 +308,7 @@ const StudyWorkPermitExtension = () => {
                 layout="horizontal"
                 className="justify-self-start md:self-center w-[300px]"
               >
-                <Checkbox>New LOA And 2 Pay Slips</Checkbox>
+                <Checkbox>New Loa And 2 Pay Slips</Checkbox>
               </Form.Item>
               <Form.Item
                 name="Enrollment_Completion_Letter1"

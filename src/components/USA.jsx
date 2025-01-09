@@ -657,7 +657,7 @@ const USA = () => {
             </Form.Item>
             <Form.Item
               name="Have_you_travel_to_any_country_within_last_five_years"
-              label="Have you travelled to any country within last five years?"
+              label="Have you traveled to any country within last five years?"
             >
               <Radio.Group>
                 <Radio value="yes">Yes</Radio>
@@ -666,7 +666,7 @@ const USA = () => {
             </Form.Item>
             <fieldset>
               <legend className="font-bold !text-black !border-b-0 !mb-2">
-                Travelling History
+                Traveling History
               </legend>
               <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
                 <Space

@@ -213,7 +213,7 @@ const VisitorVisa = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="Sponser Status"
+                label="Sponsor Status"
                 name="Sponse_Status"
                 className="w-[300px]"
               >
