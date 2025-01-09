@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Thin scrollbar only for Webkit-based browsers*/
+::-webkit-scrollbar {
+  width: 6px; /* Vertical scrollbar width */
+  height: 6px; /* Horizontal scrollbar height */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray; /* Thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: lightgray; /* Track color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer; /* Thumb hover cursor */
+}

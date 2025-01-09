@@ -826,7 +826,7 @@ const VisitorVisa = () => {
               <legend className="font-bold !text-black !border-b-0 !mb-2">
                 Travel History
               </legend>
-              <div className="overflow-x-auto w-max">
+              <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
                 <Space
                   className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                   align="baseline"
@@ -887,7 +887,9 @@ const VisitorVisa = () => {
                       ))}
                       {fields.length === 0 ? "" : <Divider className="m-0" />}
                       <Form.Item
-                        className={fields.length === 0 ? "text-center" : ""}
+                        className={
+                          fields.length === 0 ? "text-center mb-3" : "mb-3"
+                        }
                       >
                         <Button
                           type="link"
@@ -916,7 +918,7 @@ const VisitorVisa = () => {
               <legend className="font-bold !text-black !border-b-0 !mb-2">
                 Refusal History
               </legend>
-              <div className="overflow-x-auto w-max">
+              <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
                 <Space
                   className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                   align="baseline"
@@ -969,7 +971,9 @@ const VisitorVisa = () => {
                       ))}
                       {fields.length === 0 ? "" : <Divider className="m-0" />}
                       <Form.Item
-                        className={fields.length === 0 ? "text-center" : ""}
+                        className={
+                          fields.length === 0 ? "text-center mb-3" : "mb-3"
+                        }
                       >
                         <Button
                           type="link"
