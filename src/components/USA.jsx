@@ -212,7 +212,7 @@ const USA = () => {
               </Upload>
             </Form.Item>
           </div>
-          <Flex>
+          <Flex className="w-[300px] sm:w-full">
             <Form.Item
               name="Embassy_Fee"
               label={<label className="font-semibold">Embassy Fee</label>}
