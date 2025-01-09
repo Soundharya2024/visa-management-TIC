@@ -454,7 +454,7 @@ const StudyVisa = () => {
                       <Space
                         key={key}
                         className="last: mb-0 !flex"
-                        align="baseline"
+                        align="center"
                       >
                         <Button
                           type="link"
