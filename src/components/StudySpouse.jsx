@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Select, InputNumber, Button, Flex } from "antd";
+import { CASE_TYPE_OPTIONS } from "../selectOptions";
 
 const StudySpouse = () => {
   const [form] = Form.useForm();
@@ -29,6 +30,7 @@ const StudySpouse = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS}
               />
             </Form.Item>
           </div>

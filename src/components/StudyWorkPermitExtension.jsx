@@ -11,6 +11,7 @@ import {
   message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { CASE_TYPE_OPTIONS } from "../selectOptions";
 
 const StudyWorkPermitExtension = () => {
   const [form] = Form.useForm();
@@ -52,6 +53,7 @@ const StudyWorkPermitExtension = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS}
               />
             </Form.Item>
             <Form.Item

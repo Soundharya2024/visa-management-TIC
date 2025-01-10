@@ -19,8 +19,33 @@ import {
   PlusOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
+import {
+  CASE_TYPE_OPTIONS,
+  WHOM_THEY_MEET_OPTIONS,
+  VISIT_PURPOSE_OPTIONS,
+  SPONSOR_STATUS_OPTIONS,
+  OCCUPATION_OPTIONS,
+  TRAVEL_VISA_TYPE_OPTIONS,
+  REFUSAL_VISA_TYPE_OPTIONS,
+  RELATION_OPTIONS,
+  COUNTRY_CODE_OPTIONS,
+} from "../selectOptions";
 
 const { TextArea } = Input;
+
+const selectCountry = (
+  <Form.Item name="Country_Code" initialValue="+91" noStyle>
+    <Select
+      showSearch
+      popupMatchSelectWidth={false}
+      options={COUNTRY_CODE_OPTIONS.map(({ key, ...rest }) => ({
+        ...rest,
+        key,
+      }))}
+      optionFilterProp="label"
+    />
+  </Form.Item>
+);
 
 const VisitorVisa = () => {
   const [form] = Form.useForm();
@@ -34,6 +59,7 @@ const VisitorVisa = () => {
   const onFinish = (values) => {
     const formattedValues = {
       ...values,
+      Mobile: values.Country_Code + values.Mobile,
       Travel_History: values.Travel_History?.map((item) => ({
         ...item,
         Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
@@ -43,7 +69,11 @@ const VisitorVisa = () => {
         Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
       })),
     };
-    console.log("Submitted Data:", formattedValues);
+
+    //Exclude Country code on form submission
+    const { Country_Code, ...submissionValues } = formattedValues;
+
+    console.log("Submitted Data:", submissionValues);
   };
 
   return (
@@ -75,12 +105,14 @@ const VisitorVisa = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
+                  options={CASE_TYPE_OPTIONS}
                 />
               </Form.Item>
               <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
                 <InputNumber
                   stringMode
                   maxLength={10}
+                  addonBefore={selectCountry}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 />
               </Form.Item>
@@ -104,6 +136,7 @@ const VisitorVisa = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
+                  options={WHOM_THEY_MEET_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -114,6 +147,7 @@ const VisitorVisa = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
+                  options={VISIT_PURPOSE_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -232,6 +266,7 @@ const VisitorVisa = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
+                  options={SPONSOR_STATUS_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -522,6 +557,7 @@ const VisitorVisa = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
+                  options={OCCUPATION_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -758,7 +794,7 @@ const VisitorVisa = () => {
               </Form.Item>
               <Form.Item
                 name="Business_ITR_if_possible"
-                label="Business ITR ( if possible)"
+                label="Business ITR (if possible)"
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
@@ -905,7 +941,10 @@ const VisitorVisa = () => {
                             name={[name, "Visa_Type"]}
                             className="w-[200px]"
                           >
-                            <Select placeholder="Choose" />
+                            <Select
+                              placeholder="Choose"
+                              options={TRAVEL_VISA_TYPE_OPTIONS}
+                            />
                           </Form.Item>
                         </Space>
                       ))}
@@ -989,7 +1028,10 @@ const VisitorVisa = () => {
                             name={[name, "Visa_Type"]}
                             className="w-[200px]"
                           >
-                            <Select placeholder="Choose" />
+                            <Select
+                              placeholder="Choose"
+                              options={REFUSAL_VISA_TYPE_OPTIONS}
+                            />
                           </Form.Item>
                         </Space>
                       ))}
@@ -1117,6 +1159,7 @@ const VisitorVisa = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={RELATION_OPTIONS}
               />
             </Form.Item>
           </fieldset>

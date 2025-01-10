@@ -11,6 +11,7 @@ import {
   message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { CASE_TYPE_OPTIONS_WORK_VISA } from "../selectOptions";
 
 const WorkVisa = () => {
   const [form] = Form.useForm();
@@ -46,6 +47,7 @@ const WorkVisa = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS_WORK_VISA}
               />
             </Form.Item>
           </div>

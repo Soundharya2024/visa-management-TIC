@@ -19,8 +19,55 @@ import {
   PlusOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
+import {
+  CASE_TYPE_OPTIONS_USA,
+  PAYMENT_DETAILS_OPTIONS,
+  COUNTRY_CODE_OPTIONS,
+} from "../selectOptions";
 
 const { TextArea } = Input;
+
+const MobileCountrySelect = (
+  <Form.Item name="Mobile_Country_Code" initialValue="+91" noStyle>
+    <Select
+      showSearch
+      popupMatchSelectWidth={false}
+      options={COUNTRY_CODE_OPTIONS.map(({ key, ...rest }) => ({
+        ...rest,
+        key,
+      }))}
+      optionFilterProp="label"
+    />
+  </Form.Item>
+);
+
+const Phone1CountrySelect = (
+  <Form.Item name="Phone1_Country_Code" initialValue="+91" noStyle>
+    <Select
+      showSearch
+      popupMatchSelectWidth={false}
+      options={COUNTRY_CODE_OPTIONS.map(({ key, ...rest }) => ({
+        ...rest,
+        key,
+      }))}
+      optionFilterProp="label"
+    />
+  </Form.Item>
+);
+
+const Phone2CountrySelect = (
+  <Form.Item name="Phone2_Country_Code" initialValue="+91" noStyle>
+    <Select
+      showSearch
+      popupMatchSelectWidth={false}
+      options={COUNTRY_CODE_OPTIONS.map(({ key, ...rest }) => ({
+        ...rest,
+        key,
+      }))}
+      optionFilterProp="label"
+    />
+  </Form.Item>
+);
 
 const USA = () => {
   const [form] = Form.useForm();
@@ -34,6 +81,12 @@ const USA = () => {
   const onFinish = (values) => {
     const formattedValues = {
       ...values,
+
+      //Add country code with number on submit
+      Mobile: values.Mobile_Country_Code + values.Mobile,
+      Phone_Number1: values.Phone1_Country_Code + values.Phone_Number1,
+      Phone_Number2: values.Phone2_Country_Code + values.Phone_Number2,
+
       Father_DOB: values.Father_DOB?.format("DD-MMM-YYYY") || "",
       Mother_DOB: values.Mother_DOB?.format("DD-MMM-YYYY") || "",
       DOB: values.DOB?.format("DD-MMM-YYYY") || "",
@@ -50,7 +103,16 @@ const USA = () => {
         Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
       })),
     };
-    console.log("Submitted Data:", formattedValues);
+
+    //Exclude Country codes on form submission
+    const {
+      Mobile_Country_Code,
+      Phone1_Country_Code,
+      Phone2_Country_Code,
+      ...submissionValues
+    } = formattedValues;
+
+    console.log("Submitted Data:", submissionValues);
   };
 
   return (
@@ -74,12 +136,14 @@ const USA = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS_USA}
               />
             </Form.Item>
             <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
               <InputNumber
                 stringMode
                 maxLength={10}
+                addonBefore={MobileCountrySelect}
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
               />
             </Form.Item>
@@ -264,16 +328,7 @@ const USA = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
-                  options={[
-                    {
-                      value: "Payment Received",
-                      label: "Payment Received",
-                    },
-                    {
-                      value: "Payment Pending",
-                      label: "Payment Pending",
-                    },
-                  ]}
+                  options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -284,16 +339,7 @@ const USA = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
-                  options={[
-                    {
-                      value: "Payment Received",
-                      label: "Payment Received",
-                    },
-                    {
-                      value: "Payment Pending",
-                      label: "Payment Pending",
-                    },
-                  ]}
+                  options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
@@ -304,16 +350,7 @@ const USA = () => {
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
-                  options={[
-                    {
-                      value: "Payment Received",
-                      label: "Payment Received",
-                    },
-                    {
-                      value: "Payment Pending",
-                      label: "Payment Pending",
-                    },
-                  ]}
+                  options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
             </Space>
@@ -417,7 +454,12 @@ const USA = () => {
                   name="Phone_Number1"
                   className="w-[300px]"
                 >
-                  <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+                  <InputNumber
+                    stringMode
+                    maxLength={10}
+                    addonBefore={Phone1CountrySelect}
+                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  />
                 </Form.Item>
                 <Form.Item
                   name="Email_Address"
@@ -545,11 +587,7 @@ const USA = () => {
                 name="Telephone_Number"
                 className="w-[300px]"
               >
-                <InputNumber
-                  stringMode
-                  maxLength={10}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
+                <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
               </Form.Item>
             </div>
             <Form.Item
@@ -602,6 +640,7 @@ const USA = () => {
                 <InputNumber
                   stringMode
                   maxLength={10}
+                  addonBefore={Phone2CountrySelect}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 />
               </Form.Item>

@@ -13,6 +13,7 @@ import {
   Divider,
 } from "antd";
 import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import { CASE_TYPE_OPTIONS } from "../selectOptions";
 
 const StudyPermitExtension = () => {
   const [form] = Form.useForm();
@@ -59,6 +60,7 @@ const StudyPermitExtension = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS}
               />
             </Form.Item>
             <Form.Item

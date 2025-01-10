@@ -16,6 +16,7 @@ import {
   Divider,
 } from "antd";
 import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import { CASE_TYPE_OPTIONS } from "../selectOptions";
 
 const { TextArea } = Input;
 
@@ -60,6 +61,7 @@ const StudyVisa = () => {
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                options={CASE_TYPE_OPTIONS}
               />
             </Form.Item>
           </div>
