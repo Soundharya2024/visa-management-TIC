@@ -9,9 +9,9 @@ import {
   Button,
   Flex,
   Space,
-  Upload,
   Row,
   Col,
+  Upload,
   DatePicker,
   Divider,
 } from "antd";
@@ -57,11 +57,17 @@ const StudyVisa = () => {
                 className="sm:max-w-[260px] md:max-w-[300px]"
               />
             </Form.Item>
-            <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
+            <Form.Item
+              label="Case Type"
+              name="Case_Type"
+              initialValue="Study Visa"
+              className="w-[300px]"
+            >
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
+                disabled
               />
             </Form.Item>
           </div>
@@ -79,22 +85,35 @@ const StudyVisa = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                name="Passport_Upload"
-                label="Passport Upload"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.Is_Passport !== currentValues.Is_Passport
+                }
               >
-                <Upload name="Passport_Upload" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
+                {({ getFieldValue }) =>
+                  getFieldValue("Is_Passport") === "yes" && (
+                    <Form.Item
+                      name="Passport_Upload"
+                      label="Passport Upload"
+                      valuePropName="file"
+                      getValueFromEvent={getFile}
+                      className="w-[300px]"
+                    >
+                      <Upload name="Passport_Upload" maxCount={1}>
+                        <Button
+                          icon={<UploadOutlined />}
+                          iconPosition="end"
+                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                        >
+                          Select File
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                  )
+                }
               </Form.Item>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
@@ -102,167 +121,206 @@ const StudyVisa = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                name="TRF"
-                label="TRF"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.IELTS !== currentValues.IELTS
+                }
               >
-                <Upload name="TRF" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
+                {({ getFieldValue }) =>
+                  getFieldValue("IELTS") === "yes" && (
+                    <Form.Item
+                      name="TRF"
+                      label="TRF"
+                      valuePropName="file"
+                      getValueFromEvent={getFile}
+                      className="w-[300px]"
+                    >
+                      <Upload name="TRF" maxCount={1}>
+                        <Button
+                          icon={<UploadOutlined />}
+                          iconPosition="end"
+                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                        >
+                          Select File
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                  )
+                }
               </Form.Item>
-              <Form.Item
-                name="All_Education_Documents"
-                label="All Education Documents"
-                className="w-[300px]"
-              >
-                <Checkbox.Group>
-                  <Row>
-                    <Col span={8}>
-                      <Checkbox
-                        value="10th"
-                        style={{
-                          lineHeight: "32px",
-                        }}
+            </div>
+            <Form.Item
+              name="All_Education_Documents"
+              label="All Education Documents"
+              className="w-[300px]"
+            >
+              <Checkbox.Group>
+                <Row>
+                  <Col span={8}>
+                    <Checkbox
+                      value="10th"
+                      style={{
+                        lineHeight: "32px",
+                      }}
+                    >
+                      10th
+                    </Checkbox>
+                  </Col>
+                  <Col span={8}>
+                    <Checkbox
+                      value="12th"
+                      style={{
+                        lineHeight: "32px",
+                      }}
+                    >
+                      12th
+                    </Checkbox>
+                  </Col>
+                  <Col span={8}>
+                    <Checkbox
+                      value="Bachelors"
+                      style={{
+                        lineHeight: "32px",
+                      }}
+                    >
+                      Bachelors
+                    </Checkbox>
+                  </Col>
+                  <Col span={8}>
+                    <Checkbox
+                      value="Masters"
+                      style={{
+                        lineHeight: "32px",
+                      }}
+                    >
+                      Masters
+                    </Checkbox>
+                  </Col>
+                  <Col span={8}>
+                    <Checkbox
+                      value="Diploma"
+                      style={{
+                        lineHeight: "32px",
+                      }}
+                    >
+                      Diploma
+                    </Checkbox>
+                  </Col>
+                </Row>
+              </Checkbox.Group>
+            </Form.Item>
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.All_Education_Documents !==
+                currentValues.All_Education_Documents
+              }
+            >
+              {({ getFieldValue }) => {
+                const selectedDocs =
+                  getFieldValue("All_Education_Documents") || [];
+                return (
+                  <Flex vertical>
+                    {selectedDocs.includes("10th") && (
+                      <Form.Item
+                        name="th1"
+                        label="10th"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
                       >
-                        10th
-                      </Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox
-                        value="12th"
-                        style={{
-                          lineHeight: "32px",
-                        }}
+                        <Upload name="th1" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    )}
+                    {selectedDocs.includes("12th") && (
+                      <Form.Item
+                        name="th"
+                        label="12th"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
                       >
-                        12th
-                      </Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox
-                        value="Bachelor"
-                        style={{
-                          lineHeight: "32px",
-                        }}
+                        <Upload name="th" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    )}
+                    {selectedDocs.includes("Bachelors") && (
+                      <Form.Item
+                        name="Bachelors"
+                        label="Bachelors"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
                       >
-                        Bachelor
-                      </Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox
-                        value="Masters"
-                        style={{
-                          lineHeight: "32px",
-                        }}
+                        <Upload name="Bachelors" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    )}
+                    {selectedDocs.includes("Masters") && (
+                      <Form.Item
+                        name="Masters"
+                        label="Masters"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
                       >
-                        Masters
-                      </Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox
-                        value="Diploma"
-                        style={{
-                          lineHeight: "32px",
-                        }}
+                        <Upload name="Masters" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    )}
+                    {selectedDocs.includes("Diploma") && (
+                      <Form.Item
+                        name="Diploma"
+                        label="Diploma"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
                       >
-                        Diploma
-                      </Checkbox>
-                    </Col>
-                  </Row>
-                </Checkbox.Group>
-              </Form.Item>
-              <Form.Item
-                name="th1"
-                label="10th"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-              >
-                <Upload name="th1" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="th"
-                label="12th"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-              >
-                <Upload name="th" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Diploma"
-                label="Diploma"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-              >
-                <Upload name="Diploma" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Masters"
-                label="Masters"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-              >
-                <Upload name="Masters" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Bachelors"
-                label="Bachelors"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-              >
-                <Upload name="Bachelors" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
+                        <Upload name="Diploma" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    )}
+                  </Flex>
+                );
+              }}
+            </Form.Item>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 name="if_spou"
                 valuePropName="checked"
@@ -273,22 +331,35 @@ const StudyVisa = () => {
                 </Checkbox>
               </Form.Item>
               <Form.Item
-                name="Spouse_Passport"
-                label="Spouse Passport"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.if_spou !== currentValues.if_spou
+                }
               >
-                <Upload name="Spouse_Passport" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
+                {({ getFieldValue }) =>
+                  getFieldValue("if_spou") === true && (
+                    <Form.Item
+                      name="Spouse_Passport"
+                      label="Spouse Passport"
+                      valuePropName="file"
+                      getValueFromEvent={getFile}
+                      className="w-[300px]"
+                    >
+                      <Upload name="Spouse_Passport" maxCount={1}>
+                        <Button
+                          icon={<UploadOutlined />}
+                          iconPosition="end"
+                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                        >
+                          Select File
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                  )
+                }
               </Form.Item>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
                 name="Pay_Slips"
                 label="3 Pay Slips"
