@@ -132,11 +132,17 @@ const USA = () => {
                 className="sm:max-w-[260px] md:max-w-[300px]"
               />
             </Form.Item>
-            <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
+            <Form.Item
+              label="Case Type"
+              name="Case_Type"
+              initialValue="USA"
+              className="w-[300px]"
+            >
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS_USA}
+                disabled
               />
             </Form.Item>
             <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
@@ -145,6 +151,7 @@ const USA = () => {
                 maxLength={10}
                 addonBefore={MobileCountrySelect}
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                disabled
               />
             </Form.Item>
             <Form.Item
@@ -157,6 +164,7 @@ const USA = () => {
                 maxLength={80}
                 addonAfter={<MailOutlined />}
                 className="sm:max-w-[260px] md:max-w-[300px]"
+                disabled
               />
             </Form.Item>
           </div>

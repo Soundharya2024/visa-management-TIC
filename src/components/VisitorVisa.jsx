@@ -100,12 +100,14 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Case Type"
                 name="Case_Type"
+                initialValue="Visitor Visa"
                 className="w-[300px]"
               >
                 <Select
                   placeholder="Choose"
                   className="sm:max-w-[260px] md:max-w-[300px]"
                   options={CASE_TYPE_OPTIONS}
+                  disabled
                 />
               </Form.Item>
               <Form.Item label="Mobile" name="Mobile" className="w-[300px]">

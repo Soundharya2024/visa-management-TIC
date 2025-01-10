@@ -56,11 +56,17 @@ const StudyPermitExtension = () => {
                 className="sm:max-w-[260px] md:max-w-[300px]"
               />
             </Form.Item>
-            <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
+            <Form.Item
+              label="Case Type"
+              name="Case_Type"
+              className="w-[300px]"
+              initialValue="Study Permit Extension"
+            >
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
+                disabled
               />
             </Form.Item>
             <Form.Item

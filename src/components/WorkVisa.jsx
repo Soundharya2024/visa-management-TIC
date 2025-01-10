@@ -43,11 +43,17 @@ const WorkVisa = () => {
                 className="sm:max-w-[260px] md:max-w-[300px]"
               />
             </Form.Item>
-            <Form.Item label="Case Type" name="Case_Type" className="w-[300px]">
+            <Form.Item
+              label="Case Type"
+              name="Case_Type"
+              initialValue="Work Visa"
+              className="w-[300px]"
+            >
               <Select
                 placeholder="Choose"
                 className="sm:max-w-[260px] md:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS_WORK_VISA}
+                disabled
               />
             </Form.Item>
           </div>
