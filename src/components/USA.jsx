@@ -75,18 +75,40 @@ const USA = () => {
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") return e.file;
+    if (e?.file && e.file.status !== "removed") {
+      return e.file; // Return the uploaded file
+    }
+    return null; // If no file or file is removed
+  };
+
+  //Upload file checked if empty
+  const isFileEmpty = (_, file) => {
+    if (file?.size === 0) {
+      return Promise.reject(
+        new Error(
+          "Empty file found. Please try uploading another file with data."
+        )
+      );
+    }
+    return Promise.resolve(); // Validation passed
   };
 
   const onFinish = (values) => {
     const formattedValues = {
       ...values,
 
-      //Add country code with number on submit
-      Mobile: values.Mobile_Country_Code + values.Mobile,
-      Phone_Number1: values.Phone1_Country_Code + values.Phone_Number1,
-      Phone_Number2: values.Phone2_Country_Code + values.Phone_Number2,
+      // If phone numbers exist, concatenate phone numbers with country codes
+      ...(values?.Mobile && {
+        Mobile: values.Mobile_Country_Code + values.Mobile,
+      }),
+      ...(values?.Phone_Number1 && {
+        Phone_Number1: values.Phone1_Country_Code + values.Phone_Number1,
+      }),
+      ...(values?.Phone_Number2 && {
+        Phone_Number2: values.Phone2_Country_Code + values.Phone_Number2,
+      }),
 
+      // Format date fields
       Father_DOB: values.Father_DOB?.format("DD-MMM-YYYY") || "",
       Mother_DOB: values.Mother_DOB?.format("DD-MMM-YYYY") || "",
       DOB: values.DOB?.format("DD-MMM-YYYY") || "",
@@ -98,9 +120,11 @@ const USA = () => {
       Course_Starting_Date:
         values.Course_Starting_Date?.format("DD-MMM-YYYY") || "",
       Course_End_Date: values.Course_End_Date?.format("DD-MMM-YYYY") || "",
+
+      // Format Year fields in the Traveling_History array
       Traveling_History: values.Traveling_History?.map((item) => ({
         ...item,
-        Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
+        Year_field: item.Year_field?.format("YYYY") || "",
       })),
     };
 
@@ -175,6 +199,15 @@ const USA = () => {
               valuePropName="file"
               getValueFromEvent={getFile}
               className="w-[300px]"
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your Passport!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="Passport" maxCount={1}>
                 <Button
@@ -192,6 +225,15 @@ const USA = () => {
               valuePropName="file"
               getValueFromEvent={getFile}
               className="w-[300px]"
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your Aadhaar Card!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="Aadhar_card" maxCount={1}>
                 <Button
@@ -209,6 +251,15 @@ const USA = () => {
               valuePropName="file"
               getValueFromEvent={getFile}
               className="w-[300px]"
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your 10th Document!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="th1" maxCount={1}>
                 <Button
@@ -226,6 +277,15 @@ const USA = () => {
               valuePropName="file"
               getValueFromEvent={getFile}
               className="w-[300px]"
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your 12th Document!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="th" maxCount={1}>
                 <Button
@@ -243,6 +303,15 @@ const USA = () => {
               className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your TRF!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="TRF" maxCount={1}>
                 <Button
@@ -260,6 +329,15 @@ const USA = () => {
               className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your Offer Letter (Study)!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="Offer_Letter_Study" maxCount={1}>
                 <Button
@@ -277,6 +355,15 @@ const USA = () => {
               className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
+              rules={[
+                // {
+                //   required: true,
+                //   message: "Kindly upload your I20 (Study)!",
+                // },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="I20_Study" maxCount={1}>
                 <Button
@@ -524,47 +611,60 @@ const USA = () => {
               </Radio.Group>
             </Form.Item>
           </fieldset>
-          <fieldset>
-            <legend className="font-bold !text-black">Marital Status</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item
-                label="Spouse Name"
-                name="Spouse_Name"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item label="DOB" name="DOB" className="w-[300px]">
-                <DatePicker
-                  format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="City Of Birth"
-                name="City_Of_Birth"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Nationality"
-                name="Natiolity"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-            </div>
-          </fieldset>
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.Marital_Status1 !== currentValues.Marital_Status1
+            }
+          >
+            {({ getFieldValue }) =>
+              getFieldValue("Marital_Status1") === "Married" && (
+                <fieldset>
+                  <legend className="font-bold !text-black">
+                    Marital Status
+                  </legend>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                    <Form.Item
+                      label="Spouse Name"
+                      name="Spouse_Name"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item label="DOB" name="DOB" className="w-[300px]">
+                      <DatePicker
+                        format="DD-MMM-YYYY"
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="City Of Birth"
+                      name="City_Of_Birth"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Nationality"
+                      name="Natiolity"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                  </div>
+                </fieldset>
+              )
+            }
+          </Form.Item>
           <fieldset>
             <legend className="font-bold !text-black">
               Occupation Details
@@ -619,140 +719,175 @@ const USA = () => {
               </Radio.Group>
             </Form.Item>
           </fieldset>
-          <fieldset>
-            <legend className="font-bold !text-black">
-              Experience Details
-            </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item
-                label="Organization Name"
-                name="Organization_Name"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item label="Address" name="Address1" className="w-[300px]">
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Phone Number"
-                name="Phone_Number2"
-                className="w-[300px]"
-              >
-                <InputNumber
-                  stringMode
-                  maxLength={10}
-                  addonBefore={Phone2CountrySelect}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Job Title"
-                name="Job_Title"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Employment Starting Date"
-                name="Employment_Starting_Date"
-                className="w-[300px]"
-              >
-                <DatePicker
-                  format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Employment End Date"
-                name="Employment_End_Date"
-                className="w-[300px]"
-              >
-                <DatePicker
-                  format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Main Duty"
-                name="Main_Duty"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-            </div>
-            <Form.Item
-              name="Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
-              label="Have you ever Attended any Educational institution at secondary level or above?"
-            >
-              <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
-              </Radio.Group>
-            </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item
-                label="Provide name of institution"
-                name="Provide_name_of_institution"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item label="Address" name="Address2" className="w-[300px]">
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Course Of Study"
-                name="Course_Of_Study"
-                className="w-[300px]"
-              >
-                <Input
-                  maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item
-                label="Course Starting Date"
-                name="Course_Starting_Date"
-                className="w-[300px]"
-              >
-                <DatePicker
-                  format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-              <Form.Item
-                label="Course End Date"
-                name="Course_End_Date"
-                className="w-[300px]"
-              >
-                <DatePicker
-                  format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                />
-              </Form.Item>
-            </div>
-          </fieldset>
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.Previous_Employed1 !== currentValues.Previous_Employed1
+            }
+          >
+            {({ getFieldValue }) =>
+              getFieldValue("Previous_Employed1") === "yes" && (
+                <fieldset>
+                  <legend className="font-bold !text-black">
+                    Experience Details
+                  </legend>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                    <Form.Item
+                      label="Organization Name"
+                      name="Organization_Name"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Address"
+                      name="Address1"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Phone Number"
+                      name="Phone_Number2"
+                      className="w-[300px]"
+                    >
+                      <InputNumber
+                        stringMode
+                        maxLength={10}
+                        addonBefore={Phone2CountrySelect}
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Job Title"
+                      name="Job_Title"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Employment Starting Date"
+                      name="Employment_Starting_Date"
+                      className="w-[300px]"
+                    >
+                      <DatePicker
+                        format="DD-MMM-YYYY"
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Employment End Date"
+                      name="Employment_End_Date"
+                      className="w-[300px]"
+                    >
+                      <DatePicker
+                        format="DD-MMM-YYYY"
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Main Duty"
+                      name="Main_Duty"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                  </div>
+                </fieldset>
+              )
+            }
+          </Form.Item>
+          <Form.Item
+            name="Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
+            label="Have you ever Attended any Educational institution at secondary level or above?"
+          >
+            <Radio.Group>
+              <Radio value="yes">Yes</Radio>
+              <Radio value="no">No</Radio>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above !==
+              currentValues.Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above
+            }
+          >
+            {({ getFieldValue }) =>
+              getFieldValue(
+                "Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
+              ) === "yes" && (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                    <Form.Item
+                      label="Provide name of institution"
+                      name="Provide_name_of_institution"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Address"
+                      name="Address2"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Course Of Study"
+                      name="Course_Of_Study"
+                      className="w-[300px]"
+                    >
+                      <Input
+                        maxLength={255}
+                        className="sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                    <Form.Item
+                      label="Course Starting Date"
+                      name="Course_Starting_Date"
+                      className="w-[300px]"
+                    >
+                      <DatePicker
+                        format="DD-MMM-YYYY"
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      label="Course End Date"
+                      name="Course_End_Date"
+                      className="w-[300px]"
+                    >
+                      <DatePicker
+                        format="DD-MMM-YYYY"
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                      />
+                    </Form.Item>
+                  </div>
+                </>
+              )
+            }
+          </Form.Item>
           <fieldset>
             <legend className="font-bold !text-black">Language Details</legend>
             <Form.Item
@@ -776,72 +911,95 @@ const USA = () => {
                 <Radio value="no">No</Radio>
               </Radio.Group>
             </Form.Item>
-            <fieldset>
-              <legend className="font-bold !text-black !border-b-0 !mb-2">
-                Traveling History
-              </legend>
-              <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
-                <Space
-                  className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
-                  align="baseline"
-                >
-                  <div className="w-[32px]"></div>
-                  <div className="font-semibold w-[200px]">Country Name</div>
-                  <div className="font-semibold w-[200px]">Year</div>
-                </Space>
-                <Form.List name="Traveling_History">
-                  {(fields, { add, remove }) => (
-                    <>
-                      {fields.map(({ key, name, ...restField }) => (
-                        <Space
-                          key={key}
-                          className="last: mb-0 !flex"
-                          align="baseline"
-                        >
-                          <Button
-                            type="link"
-                            icon={<CloseOutlined />}
-                            danger
-                            onClick={() => remove(name)}
-                          />
-                          <Form.Item
-                            {...restField}
-                            name={[name, "Country_Name"]}
-                            className="w-[200px]"
-                          >
-                            <Input maxLength={255} />
-                          </Form.Item>
-                          <Form.Item
-                            {...restField}
-                            name={[name, "Year_field"]}
-                            className="w-[200px]"
-                          >
-                            <DatePicker
-                              format="DD-MMM-YYYY"
-                              className="w-[200px]"
-                            />
-                          </Form.Item>
-                        </Space>
-                      ))}
-                      {fields.length === 0 ? "" : <Divider className="m-0" />}
-                      <Form.Item
-                        className={
-                          fields.length === 0 ? "text-center mb-3" : "mb-3"
-                        }
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.Have_you_travel_to_any_country_within_last_five_years !==
+                currentValues.Have_you_travel_to_any_country_within_last_five_years
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue(
+                  "Have_you_travel_to_any_country_within_last_five_years"
+                ) === "yes" && (
+                  <fieldset>
+                    <legend className="font-bold !text-black !border-b-0 !mb-2">
+                      Traveling History
+                    </legend>
+                    <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                      <Space
+                        className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
+                        align="baseline"
                       >
-                        <Button
-                          type="link"
-                          onClick={() => add()}
-                          icon={<PlusOutlined />}
-                        >
-                          Add New
-                        </Button>
-                      </Form.Item>
-                    </>
-                  )}
-                </Form.List>
-              </div>
-            </fieldset>
+                        <div className="w-[32px]"></div>
+                        <div className="font-semibold w-[200px]">
+                          Country Name
+                        </div>
+                        <div className="font-semibold w-[200px]">Year</div>
+                      </Space>
+                      <Form.List name="Traveling_History">
+                        {(fields, { add, remove }) => (
+                          <>
+                            {fields.map(({ key, name, ...restField }) => (
+                              <Space
+                                key={key}
+                                className="last: mb-0 !flex"
+                                align="baseline"
+                              >
+                                <Button
+                                  type="link"
+                                  icon={<CloseOutlined />}
+                                  danger
+                                  onClick={() => remove(name)}
+                                />
+                                <Form.Item
+                                  {...restField}
+                                  name={[name, "Country_Name"]}
+                                  className="w-[200px]"
+                                >
+                                  <Input maxLength={255} />
+                                </Form.Item>
+                                <Form.Item
+                                  {...restField}
+                                  name={[name, "Year_field"]}
+                                  className="w-[200px]"
+                                >
+                                  <DatePicker
+                                    picker="year"
+                                    format="YYYY"
+                                    className="w-[200px]"
+                                  />
+                                </Form.Item>
+                              </Space>
+                            ))}
+                            {fields.length === 0 ? (
+                              ""
+                            ) : (
+                              <Divider className="m-0" />
+                            )}
+                            <Form.Item
+                              className={
+                                fields.length === 0
+                                  ? "text-center mb-3"
+                                  : "mb-3"
+                              }
+                            >
+                              <Button
+                                type="link"
+                                onClick={() => add()}
+                                icon={<PlusOutlined />}
+                              >
+                                Add New
+                              </Button>
+                            </Form.Item>
+                          </>
+                        )}
+                      </Form.List>
+                    </div>
+                  </fieldset>
+                )
+              }
+            </Form.Item>
           </fieldset>
           <fieldset>
             <legend className="font-bold !text-black">Health Details</legend>
@@ -856,18 +1014,30 @@ const USA = () => {
               </Radio.Group>
             </Form.Item>
             <Form.Item
-              label="Health Issue"
-              name="Health_Issue"
-              className="w-[300px]"
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.Do_you_have_any_health_issues !==
+                currentValues.Do_you_have_any_health_issues
+              }
             >
-              <TextArea
-                maxLength={100}
-                style={{
-                  height: 100,
-                  resize: "none",
-                }}
-                className="sm:!max-w-[260px] md:!max-w-[300px]"
-              />
+              {({ getFieldValue }) =>
+                getFieldValue("Do_you_have_any_health_issues") === "yes" && (
+                  <Form.Item
+                    label="Health Issue"
+                    name="Health_Issue"
+                    className="w-[300px]"
+                  >
+                    <TextArea
+                      maxLength={100}
+                      style={{
+                        height: 100,
+                        resize: "none",
+                      }}
+                      className="sm:!max-w-[260px] md:!max-w-[300px]"
+                    />
+                  </Form.Item>
+                )
+              }
             </Form.Item>
           </fieldset>
           <fieldset>
