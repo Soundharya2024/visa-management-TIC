@@ -48,6 +48,15 @@ const WorkVisa = () => {
     return Promise.resolve(); // Validation passed
   };
 
+  const isWholeNumber = (_, value) => {
+    if (value === undefined || value % 1 === 0) {
+      return Promise.resolve();
+    }
+    return Promise.reject(
+      new Error("Round off the Age field value to 0 decimal places")
+    );
+  };
+
   const onFinish = (values) => {
     console.log("Submitted Data:", values);
   };
@@ -94,7 +103,12 @@ const WorkVisa = () => {
                   className="sm:max-w-[260px] md:max-w-[300px]"
                 />
               </Form.Item>
-              <Form.Item label="Age" name="Age" className="w-[300px]">
+              <Form.Item
+                label="Age"
+                name="Age"
+                className="w-[300px]"
+                rules={[{ validator: isWholeNumber }]}
+              >
                 <InputNumber
                   max={150}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
@@ -117,6 +131,8 @@ const WorkVisa = () => {
                 className="w-[300px]"
               >
                 <InputNumber
+                  stringMode
+                  maxLength={10}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   addonAfter="%"
                 />
@@ -127,6 +143,8 @@ const WorkVisa = () => {
                 className="w-[300px]"
               >
                 <InputNumber
+                  stringMode
+                  maxLength={10}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   addonAfter="₹"
                   placeholder="##,##,###.##"
@@ -141,15 +159,34 @@ const WorkVisa = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                label="ITR Amount  "
-                name="ITR_Amount"
-                className="w-[300px]"
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.ITR !== currentValues.ITR
+                }
               >
-                <InputNumber
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
-                  addonAfter="₹"
-                  placeholder="##,##,###.##"
-                />
+                {({ getFieldValue }) =>
+                  getFieldValue("ITR") === "yes" && (
+                    <Form.Item
+                      label="ITR Amount"
+                      name="ITR_Amount"
+                      className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input ITR Amount!",
+                        },
+                      ]}
+                    >
+                      <InputNumber
+                        stringMode
+                        maxLength={10}
+                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        addonAfter="₹"
+                        placeholder="##,##,###.##"
+                      />
+                    </Form.Item>
+                  )
+                }
               </Form.Item>
             </div>
           </fieldset>
@@ -417,6 +454,501 @@ const WorkVisa = () => {
                 <Radio value="Canada">Canada</Radio>
               </Radio.Group>
             </Form.Item>
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.If_field !== currentValues.If_field
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue("If_field") === "Canada" && (
+                  <Form.Item name="Status" label="Status" className="w-[300px]">
+                    <Radio.Group>
+                      <Radio value="Work Permit">Work Permit</Radio>
+                      <Radio value="Study Permit">Study Permit</Radio>
+                    </Radio.Group>
+                  </Form.Item>
+                )
+              }
+            </Form.Item>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.If_field !== currentValues.If_field ||
+                  prevValues.Status !== currentValues.Status
+                }
+              >
+                {({ getFieldValue }) =>
+                  (getFieldValue("If_field") === "India" ||
+                    (getFieldValue("If_field") === "Canada" &&
+                      getFieldValue("Status") === "Study Permit") ||
+                    (getFieldValue("If_field") === "Canada" &&
+                      getFieldValue("Status") === "Work Permit")) && (
+                    <Form.Item
+                      name="Sponsor_Passport"
+                      label="Passport"
+                      valuePropName="file"
+                      getValueFromEvent={getFile}
+                      className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly upload your Sponsor Passport!",
+                        },
+                        {
+                          validator: isFileEmpty,
+                        },
+                      ]}
+                    >
+                      <Upload name="Sponsor_Passport" maxCount={1}>
+                        <Button
+                          icon={<UploadOutlined />}
+                          iconPosition="end"
+                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                        >
+                          Select File
+                        </Button>
+                      </Upload>
+                    </Form.Item>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.If_field !== currentValues.If_field ||
+                  prevValues.Status !== currentValues.Status
+                }
+              >
+                {({ getFieldValue }) =>
+                  (getFieldValue("If_field") === "India" ||
+                    (getFieldValue("If_field") === "Canada" &&
+                      getFieldValue("Status") === "Study Permit")) && (
+                    <>
+                      <Form.Item
+                        name="LOA"
+                        label="LOA"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your LOA!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="LOA" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Lie"
+                        label="Fees Receipt"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Fees Receipt!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Lie" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="GIC_certi"
+                        label="GIC Certificate"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your GIC Certificate!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="GIC_certi" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    </>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.If_field !== currentValues.If_field ||
+                  prevValues.Status !== currentValues.Status
+                }
+              >
+                {({ getFieldValue }) =>
+                  getFieldValue("If_field") === "Canada" &&
+                  getFieldValue("Status") === "Study Permit" && (
+                    <>
+                      <Form.Item
+                        name="Enrollment_Completion_Letter"
+                        label="Enrollment Letter"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Enrollment Letter!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload
+                          name="Enrollment_Completion_Letter"
+                          maxCount={1}
+                        >
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Study_Permit"
+                        label="Study Permit"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Study Permit!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Study_Permit" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Visa_Copy"
+                        label="Visa Copy"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Visa Copy!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Visa_Copy" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="GIC"
+                        label="GIC Account Summary"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your GIC Account Summary!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="GIC" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    </>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.If_field !== currentValues.If_field ||
+                  prevValues.Status !== currentValues.Status
+                }
+              >
+                {({ getFieldValue }) =>
+                  ((getFieldValue("If_field") === "Canada" &&
+                    getFieldValue("Status") === "Work Permit") ||
+                    (getFieldValue("If_field") === "Canada" &&
+                      getFieldValue("Status") === "Study Permit")) && (
+                    <>
+                      <Form.Item
+                        name="Chat_History"
+                        label="Chat History"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Chat History!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Chat_History" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Video_Call_History"
+                        label="Video Call History"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Video Call History!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Video_Call_History" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="call_History"
+                        label="Call History"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Call History!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="call_History" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    </>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.If_field !== currentValues.If_field ||
+                  prevValues.Status !== currentValues.Status
+                }
+              >
+                {({ getFieldValue }) =>
+                  getFieldValue("If_field") === "Canada" &&
+                  getFieldValue("Status") === "Work Permit" && (
+                    <>
+                      <Form.Item
+                        name="Work_permit"
+                        label="Work Permit"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Work Permit!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Work_permit" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="month_Pay_Slips"
+                        label="3 month Pay Slips"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your 3 month Pay Slips!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="month_Pay_Slips" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Job_Letter_Appointment_Letter"
+                        label="Job Letter / Appointment Letter"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message:
+                              "Kindly upload your Job Letter / Appointment Letter!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload
+                          name="Job_Letter_Appointment_Letter"
+                          maxCount={1}
+                        >
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                      <Form.Item
+                        name="Account_Balan"
+                        label="Account Summary"
+                        valuePropName="file"
+                        getValueFromEvent={getFile}
+                        className="w-[300px]"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Kindly upload your Account Summary!",
+                          },
+                          {
+                            validator: isFileEmpty,
+                          },
+                        ]}
+                      >
+                        <Upload name="Account_Balan" maxCount={1}>
+                          <Button
+                            icon={<UploadOutlined />}
+                            iconPosition="end"
+                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          >
+                            Select File
+                          </Button>
+                        </Upload>
+                      </Form.Item>
+                    </>
+                  )
+                }
+              </Form.Item>
+            </div>
           </fieldset>
           <fieldset>
             <legend className="font-bold !text-black">
@@ -438,404 +970,6 @@ const WorkVisa = () => {
                 <Radio value="no">No</Radio>
               </Radio.Group>
             </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-              <Form.Item
-                name="Sponsor_Passport"
-                label="Passport"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Sponsor Passport!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Sponsor_Passport" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item name="Status" label="Status" className="w-[300px]">
-                <Radio.Group>
-                  <Radio value="Work Permit">Work Permit</Radio>
-                  <Radio value="Study Permit">Study Permit</Radio>
-                </Radio.Group>
-              </Form.Item>
-              <Form.Item
-                name="Lie"
-                label="Fees Receipt"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Fees Receipt!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Lie" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="LOA"
-                label="LOA"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your LOA!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="LOA" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Enrollment_Completion_Letter"
-                label="Enrollment Letter"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Enrollment Letter!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Enrollment_Completion_Letter" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="GIC_certi"
-                label="GIC Certificate"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your GIC Certificate!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="GIC_certi" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Visa_Copy"
-                label="Visa Copy"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Visa Copy!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Visa_Copy" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Study_Permit"
-                label="Study Permit"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Study Permit!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Study_Permit" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Chat_History"
-                label="Chat History"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Chat History!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Chat_History" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="GIC"
-                label="GIC Account Summary"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your GIC Account Summary!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="GIC" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Video_Call_History"
-                label="Video Call History"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Video Call History!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Video_Call_History" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="call_History"
-                label="Call History"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Call History!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="call_History" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Work_permit"
-                label="Work Permit"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Work Permit!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Work_permit" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Job_Letter_Appointment_Letter"
-                label="Job Letter / Appointment Letter"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Job Letter / Appointment Letter!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Job_Letter_Appointment_Letter" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="month_Pay_Slips"
-                label="3 month Pay Slips"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your 3 month Pay Slips!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="month_Pay_Slips" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="Account_Balan"
-                label="Account Summary"
-                valuePropName="file"
-                getValueFromEvent={getFile}
-                className="w-[300px]"
-                rules={[
-                  // {
-                  //   required: true,
-                  //   message: "Kindly upload your Account Summary!",
-                  // },
-                  {
-                    validator: isFileEmpty,
-                  },
-                ]}
-              >
-                <Upload name="Account_Balan" maxCount={1}>
-                  <Button
-                    icon={<UploadOutlined />}
-                    iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
-                  >
-                    Select File
-                  </Button>
-                </Upload>
-              </Form.Item>
-            </div>
           </fieldset>
           <fieldset>
             <legend className="font-bold !text-black">Visa Chances</legend>
