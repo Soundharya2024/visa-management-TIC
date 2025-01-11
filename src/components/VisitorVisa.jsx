@@ -448,10 +448,10 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Sponsor Passport!",
-                              // },
+                              {
+                                required: true,
+                                message: "Kindly upload your Sponsor Passport!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -485,10 +485,10 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Study Permit!",
-                              // },
+                              {
+                                required: true,
+                                message: "Kindly upload your Study Permit!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -522,10 +522,11 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Canadian Passport!",
-                              // },
+                              {
+                                required: true,
+                                message:
+                                  "Kindly upload your Canadian Passport!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -559,10 +560,10 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your LOA!",
-                              // },
+                              {
+                                required: true,
+                                message: "Kindly upload your LOA!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -632,10 +633,10 @@ const VisitorVisa = () => {
                                 getValueFromEvent={getFile}
                                 className="w-[300px]"
                                 rules={[
-                                  // {
-                                  //   required: true,
-                                  //   message: "Kindly upload your Pay Slips!",
-                                  // },
+                                  {
+                                    required: true,
+                                    message: "Kindly upload your Pay Slips!",
+                                  },
                                   {
                                     validator: isFileEmpty,
                                   },
@@ -658,10 +659,10 @@ const VisitorVisa = () => {
                                 getValueFromEvent={getFile}
                                 className="w-[300px]"
                                 rules={[
-                                  // {
-                                  //   required: true,
-                                  //   message: "Kindly upload your Job Letter!",
-                                  // },
+                                  {
+                                    required: true,
+                                    message: "Kindly upload your Job Letter!",
+                                  },
                                   {
                                     validator: isFileEmpty,
                                   },
@@ -697,10 +698,11 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Enrollment / Completion Letter!",
-                              // },
+                              {
+                                required: true,
+                                message:
+                                  "Kindly upload your Enrollment / Completion Letter!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -738,10 +740,11 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Business Documents!",
-                              // },
+                              {
+                                required: true,
+                                message:
+                                  "Kindly upload your Business Documents!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -772,6 +775,12 @@ const VisitorVisa = () => {
                             name="Current_Add"
                             label="Current Occupation"
                             className="w-[300px]"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Kindly input Current Occupation!",
+                              },
+                            ]}
                           >
                             <Radio.Group>
                               <Radio value="Business">Business</Radio>
@@ -819,6 +828,12 @@ const VisitorVisa = () => {
                             label="Current Address"
                             name="Current_Address"
                             className="w-[300px]"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Kindly input Current Address!",
+                              },
+                            ]}
                           >
                             <Input
                               maxLength={255}
@@ -843,10 +858,10 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your Work Permit!",
-                              // },
+                              {
+                                required: true,
+                                message: "Kindly upload your Work Permit!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -880,10 +895,10 @@ const VisitorVisa = () => {
                             getValueFromEvent={getFile}
                             className="w-[300px]"
                             rules={[
-                              // {
-                              //   required: true,
-                              //   message: "Kindly upload your PR Card!",
-                              // },
+                              {
+                                required: true,
+                                message: "Kindly upload your PR Card!",
+                              },
                               {
                                 validator: isFileEmpty,
                               },
@@ -909,10 +924,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Indian Passport!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Indian Passport!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -991,7 +1006,7 @@ const VisitorVisa = () => {
                         {
                           required: true,
                           message:
-                            "Kindly input your information on Whom They Meet!",
+                            "Kindly input your information on Present Occupation!",
                         },
                       ]}
                     >
@@ -1022,10 +1037,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Digital Photo!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Digital Photo!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1064,10 +1079,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Lease Agreement!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Lease Agreement!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1103,10 +1118,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your NOC!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your NOC!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1141,10 +1156,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your 3 Month Statement!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your 3 Month Statement!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1207,10 +1222,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your ITR Document!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your ITR Document!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1246,10 +1261,11 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your 3 Month Current Account Statement!",
-                        // },
+                        {
+                          required: true,
+                          message:
+                            "Kindly upload your 3 Month Current Account Statement!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1287,10 +1303,11 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Pension / Retirement Order!",
-                        // },
+                        {
+                          required: true,
+                          message:
+                            "Kindly upload your Pension / Retirement Order!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1325,10 +1342,11 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Shop Establishment Document!",
-                        // },
+                        {
+                          required: true,
+                          message:
+                            "Kindly upload your Shop Establishment Document!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1390,10 +1408,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Fard With Translation!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Fard With Translation!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1428,10 +1446,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Job Letter!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Job Letter!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1467,10 +1485,10 @@ const VisitorVisa = () => {
                         getValueFromEvent={getFile}
                         className="w-[300px]"
                         rules={[
-                          // {
-                          //   required: true,
-                          //   message: "Kindly upload your Last 2 Pay Slips!",
-                          // },
+                          {
+                            required: true,
+                            message: "Kindly upload your Last 2 Pay Slips!",
+                          },
                           {
                             validator: isFileEmpty,
                           },
@@ -1493,10 +1511,11 @@ const VisitorVisa = () => {
                         getValueFromEvent={getFile}
                         className="w-[300px]"
                         rules={[
-                          // {
-                          //   required: true,
-                          //   message: "Kindly upload your Business ITR Document!",
-                          // },
+                          {
+                            required: true,
+                            message:
+                              "Kindly upload your Business ITR Document!",
+                          },
                           {
                             validator: isFileEmpty,
                           },
@@ -1519,10 +1538,10 @@ const VisitorVisa = () => {
                         getValueFromEvent={getFile}
                         className="w-[300px]"
                         rules={[
-                          // {
-                          //   required: true,
-                          //   message: "Kindly upload your Business Proof!",
-                          // },
+                          {
+                            required: true,
+                            message: "Kindly upload your Business Proof!",
+                          },
                           {
                             validator: isFileEmpty,
                           },
@@ -1559,10 +1578,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your J Form!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your J Form!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1674,6 +1693,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Country_Name"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Country Name!",
+                                    },
+                                  ]}
                                 >
                                   <Input maxLength={255} />
                                 </Form.Item>
@@ -1681,6 +1706,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Year_field"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Year!",
+                                    },
+                                  ]}
                                 >
                                   <DatePicker
                                     picker="year"
@@ -1692,6 +1723,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Duration"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Duration!",
+                                    },
+                                  ]}
                                 >
                                   <Input maxLength={255} />
                                 </Form.Item>
@@ -1699,6 +1736,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Visa_Type"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly select Visa Type!",
+                                    },
+                                  ]}
                                 >
                                   <Select
                                     placeholder="Choose"
@@ -1794,6 +1837,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Country_Name"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Country Name!",
+                                    },
+                                  ]}
                                 >
                                   <Input maxLength={255} />
                                 </Form.Item>
@@ -1801,6 +1850,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Year_field"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Year!",
+                                    },
+                                  ]}
                                 >
                                   <DatePicker
                                     picker="year"
@@ -1812,6 +1867,12 @@ const VisitorVisa = () => {
                                   {...restField}
                                   name={[name, "Visa_Type"]}
                                   className="w-[200px]"
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Kindly input Visa Type!",
+                                    },
+                                  ]}
                                 >
                                   <Select
                                     placeholder="Choose"
@@ -1877,6 +1938,12 @@ const VisitorVisa = () => {
                       label="Health issues Details"
                       name="Health_issues_Deatils"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Health issues Details!",
+                        },
+                      ]}
                     >
                       <TextArea
                         maxLength={100}
@@ -1894,10 +1961,10 @@ const VisitorVisa = () => {
                       getValueFromEvent={getFile}
                       className="w-[300px]"
                       rules={[
-                        // {
-                        //   required: true,
-                        //   message: "Kindly upload your Medical Certificate!",
-                        // },
+                        {
+                          required: true,
+                          message: "Kindly upload your Medical Certificate!",
+                        },
                         {
                           validator: isFileEmpty,
                         },
@@ -1947,6 +2014,12 @@ const VisitorVisa = () => {
                       label="Band Score"
                       name="Band_Score"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Band Score!",
+                        },
+                      ]}
                     >
                       <InputNumber
                         className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
@@ -1957,6 +2030,12 @@ const VisitorVisa = () => {
                       label="Reading"
                       name="Reading"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Reading!",
+                        },
+                      ]}
                     >
                       <Input
                         maxLength={255}
@@ -1967,6 +2046,12 @@ const VisitorVisa = () => {
                       label="Listening"
                       name="Listining"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Listening!",
+                        },
+                      ]}
                     >
                       <Input
                         maxLength={255}
@@ -1977,6 +2062,12 @@ const VisitorVisa = () => {
                       label="Writing"
                       name="Writing"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Writing!",
+                        },
+                      ]}
                     >
                       <Input
                         maxLength={255}
@@ -1987,6 +2078,12 @@ const VisitorVisa = () => {
                       label="Speaking"
                       name="Speaking"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Speaking!",
+                        },
+                      ]}
                     >
                       <Input
                         maxLength={255}
@@ -1997,6 +2094,12 @@ const VisitorVisa = () => {
                       label="Overall"
                       name="Overall"
                       className="w-[300px]"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly input Overall!",
+                        },
+                      ]}
                     >
                       <Input
                         maxLength={255}
@@ -2036,6 +2139,12 @@ const VisitorVisa = () => {
                     label="Relation"
                     name="Relation"
                     className="w-[300px]"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Kindly select Relation!",
+                      },
+                    ]}
                   >
                     <Select
                       placeholder="Choose"
