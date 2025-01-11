@@ -8,7 +8,6 @@ import {
   Button,
   Flex,
   Upload,
-  message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { CASE_TYPE_OPTIONS } from "../selectOptions";
@@ -19,7 +18,34 @@ const StudyWorkPermitExtension = () => {
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") return e.file;
+    if (e?.file && e.file.status !== "removed") {
+      return e.file; // Return the uploaded file
+    }
+    return null; // If no file or file is removed
+  };
+
+  //Upload file checked if empty
+  const isFileEmpty = (_, file) => {
+    if (file?.size === 0) {
+      return Promise.reject(
+        new Error(
+          "Empty file found. Please try uploading another file with data."
+        )
+      );
+    }
+    return Promise.resolve(); // Validation passed
+  };
+
+  //Upload file type check for images
+  const isImage = (_, file) => {
+    if (file) {
+      const isPNG = file.type === "image/png";
+      const isJPEG = file.type === "image/jpeg";
+      if (!isPNG && !isJPEG) {
+        return Promise.reject(new Error(`${file.name} is not a png/jpeg file`));
+      }
+    }
+    return Promise.resolve(); // Validation passed
   };
 
   const onFinish = (values) => {
@@ -102,6 +128,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Study Permit!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button
@@ -119,6 +154,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Passport and Visa!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Passport_Visa" maxCount={1}>
                   <Button
@@ -136,6 +180,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Medical Document!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Medical" maxCount={1}>
                   <Button
@@ -153,6 +206,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your File!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="File_upload" maxCount={1}>
                   <Button
@@ -170,19 +232,20 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Digital Photo!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                  {
+                    validator: isImage,
+                  },
+                ]}
               >
-                <Upload
-                  name="Digital_Photo"
-                  beforeUpload={(file) => {
-                    const isPNG = file.type === "image/png";
-                    const isJPEG = file.type === "image/jpeg";
-                    if (!isPNG && !isJPEG) {
-                      message.error(`${file.name} is not a png/jpeg file`);
-                    }
-                    return isPNG || isJPEG || Upload.LIST_IGNORE;
-                  }}
-                  maxCount={1}
-                >
+                <Upload name="Digital_Photo" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -198,6 +261,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your New Loa And 2 Pay Slips!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="New_Loa_And_2_Pay_Slips" maxCount={1}>
                   <Button
@@ -215,6 +287,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Enrollment / Completion Letter!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Enrollment_Completion_Letter" maxCount={1}>
                   <Button
@@ -232,6 +313,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Study Permit!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Study_Permit1" maxCount={1}>
                   <Button
@@ -249,6 +339,15 @@ const StudyWorkPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Marriage Certificate!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Marriage_Certificate" maxCount={1}>
                   <Button
