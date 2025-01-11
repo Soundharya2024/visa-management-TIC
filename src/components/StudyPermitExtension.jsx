@@ -21,12 +21,29 @@ const StudyPermitExtension = () => {
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") return e.file;
+    if (e?.file && e.file.status !== "removed") {
+      return e.file; // Return the uploaded file
+    }
+    return null; // If no file or file is removed
+  };
+
+  //Upload file checked if empty
+  const isFileEmpty = (_, file) => {
+    if (file?.size === 0) {
+      return Promise.reject(
+        new Error(
+          "Empty file found. Please try uploading another file with data."
+        )
+      );
+    }
+    return Promise.resolve(); // Validation passed
   };
 
   const onFinish = (values) => {
     const formattedValues = {
       ...values,
+
+      // Format Year fields in the Education_Details array
       Education_Details: values.Education_Details?.map((item) => ({
         ...item,
         Year_field: item.Year_field?.format("YYYY") || "",
@@ -190,6 +207,15 @@ const StudyPermitExtension = () => {
             valuePropName="file"
             getValueFromEvent={getFile}
             className="w-[300px]"
+            rules={[
+              // {
+              //   required: true,
+              //   message: "Kindly upload your passport!",
+              // },
+              {
+                validator: isFileEmpty,
+              },
+            ]}
           >
             <Upload name="Medical_Certificate" maxCount={1}>
               <Button
@@ -220,6 +246,15 @@ const StudyPermitExtension = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your passport!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button

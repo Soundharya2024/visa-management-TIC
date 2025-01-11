@@ -8,7 +8,6 @@ import {
   Button,
   Flex,
   Upload,
-  message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { CASE_TYPE_OPTIONS_WORK_VISA } from "../selectOptions";
@@ -19,7 +18,34 @@ const WorkVisa = () => {
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") return e.file;
+    if (e?.file && e.file.status !== "removed") {
+      return e.file; // Return the uploaded file
+    }
+    return null; // If no file or file is removed
+  };
+
+  //Upload file checked if empty
+  const isFileEmpty = (_, file) => {
+    if (file?.size === 0) {
+      return Promise.reject(
+        new Error(
+          "Empty file found. Please try uploading another file with data."
+        )
+      );
+    }
+    return Promise.resolve(); // Validation passed
+  };
+
+  //Upload file type check for images
+  const isImage = (_, file) => {
+    if (file) {
+      const isPNG = file.type === "image/png";
+      const isJPEG = file.type === "image/jpeg";
+      if (!isPNG && !isJPEG) {
+        return Promise.reject(new Error(`${file.name} is not a png/jpeg file`));
+      }
+    }
+    return Promise.resolve(); // Validation passed
   };
 
   const onFinish = (values) => {
@@ -136,6 +162,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Passport!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Passport" maxCount={1}>
                   <Button
@@ -153,19 +188,20 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Digital Photo!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                  {
+                    validator: isImage,
+                  },
+                ]}
               >
-                <Upload
-                  name="Digital_Photo"
-                  beforeUpload={(file) => {
-                    const isPNG = file.type === "image/png";
-                    const isJPEG = file.type === "image/jpeg";
-                    if (!isPNG && !isJPEG) {
-                      message.error(`${file.name} is not a png/jpeg file`);
-                    }
-                    return isPNG || isJPEG || Upload.LIST_IGNORE;
-                  }}
-                  maxCount={1}
-                >
+                <Upload name="Digital_Photo" maxCount={1}>
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -181,6 +217,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Marriage Certificate!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Marriage_Certificate" maxCount={1}>
                   <Button
@@ -198,6 +243,18 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Marriage Photos!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                  // {
+                  //   validator: isImage,
+                  // },
+                ]}
               >
                 <Upload name="Marriage_Photo" maxCount={1}>
                   <Button
@@ -222,6 +279,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Education Documents!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Education_Details" maxCount={1}>
                   <Button
@@ -239,6 +305,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Job Letter!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Job_Letter" maxCount={1}>
                   <Button
@@ -256,6 +331,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your ITR Document!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="ITR1" maxCount={1}>
                   <Button
@@ -269,10 +353,19 @@ const WorkVisa = () => {
               </Form.Item>
               <Form.Item
                 name="Bank_Statment"
-                label="Bank Statment"
+                label="Bank Statement"
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Bank Statement!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Bank_Statment" maxCount={1}>
                   <Button
@@ -290,6 +383,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Salary Slips!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Sallary" maxCount={1}>
                   <Button
@@ -343,6 +445,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Sponsor Passport!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Sponsor_Passport" maxCount={1}>
                   <Button
@@ -366,6 +477,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Fees Receipt!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Lie" maxCount={1}>
                   <Button
@@ -383,6 +503,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your LOA!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="LOA" maxCount={1}>
                   <Button
@@ -400,6 +529,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Enrollment Letter!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Enrollment_Completion_Letter" maxCount={1}>
                   <Button
@@ -417,6 +555,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your GIC Certificate!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="GIC_certi" maxCount={1}>
                   <Button
@@ -434,6 +581,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Visa Copy!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Visa_Copy" maxCount={1}>
                   <Button
@@ -451,6 +607,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Study Permit!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Study_Permit" maxCount={1}>
                   <Button
@@ -468,6 +633,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Chat History!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Chat_History" maxCount={1}>
                   <Button
@@ -485,6 +659,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your GIC Account Summary!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="GIC" maxCount={1}>
                   <Button
@@ -502,6 +685,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Video Call History!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Video_Call_History" maxCount={1}>
                   <Button
@@ -519,6 +711,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Call History!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="call_History" maxCount={1}>
                   <Button
@@ -532,10 +733,19 @@ const WorkVisa = () => {
               </Form.Item>
               <Form.Item
                 name="Work_permit"
-                label="Work permit"
+                label="Work Permit"
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Work Permit!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Work_permit" maxCount={1}>
                   <Button
@@ -553,6 +763,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Job Letter / Appointment Letter!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Job_Letter_Appointment_Letter" maxCount={1}>
                   <Button
@@ -570,6 +789,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your 3 month Pay Slips!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="month_Pay_Slips" maxCount={1}>
                   <Button
@@ -587,6 +815,15 @@ const WorkVisa = () => {
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: "Kindly upload your Account Summary!",
+                  // },
+                  {
+                    validator: isFileEmpty,
+                  },
+                ]}
               >
                 <Upload name="Account_Balan" maxCount={1}>
                   <Button

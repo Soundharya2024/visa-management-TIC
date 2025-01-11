@@ -22,13 +22,32 @@ const VisitorStudies = () => {
   //Set TRF_File field in form with file details
   const getFile = (e) => {
     console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") return e.file;
+    if (e?.file && e.file.status !== "removed") {
+      return e.file; // Return the uploaded file
+    }
+    return null; // If no file or file is removed
+  };
+
+  //Upload file checked if empty
+  const isFileEmpty = (_, file) => {
+    if (file?.size === 0) {
+      return Promise.reject(
+        new Error(
+          "Empty file found. Please try uploading another file with data."
+        )
+      );
+    }
+    return Promise.resolve(); // Validation passed
   };
 
   const onFinish = (values) => {
     const formattedValues = {
       ...values,
+
+      // Format intake date field
       intake: values.intake?.format("DD-MMM-YYYY") || "",
+
+      // Format Year fields in the Education_Details array
       Education_Details: values.Education_Details?.map((item) => ({
         ...item,
         Year_field: item.Year_field?.format("YYYY") || "",
@@ -201,6 +220,15 @@ const VisitorStudies = () => {
               className="w-[300px]"
               valuePropName="file"
               getValueFromEvent={getFile}
+              rules={[
+                {
+                  required: true,
+                  message: "Kindly upload your TRF!",
+                },
+                {
+                  validator: isFileEmpty,
+                },
+              ]}
             >
               <Upload name="TRF" maxCount={1}>
                 <Button
