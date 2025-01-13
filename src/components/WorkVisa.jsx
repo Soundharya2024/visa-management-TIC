@@ -39,10 +39,9 @@ const WorkVisa = () => {
   //Upload file type check for images
   const isImage = (_, file) => {
     if (file) {
-      const isPNG = file.type === "image/png";
-      const isJPEG = file.type === "image/jpeg";
-      if (!isPNG && !isJPEG) {
-        return Promise.reject(new Error(`${file.name} is not a png/jpeg file`));
+      const isImage = file.type.startsWith("image/");
+      if (!isImage) {
+        return Promise.reject(new Error(`${file.name} is not an image file`));
       }
     }
     return Promise.resolve(); // Validation passed
@@ -238,11 +237,7 @@ const WorkVisa = () => {
                   },
                 ]}
               >
-                <Upload
-                  name="Digital_Photo"
-                  maxCount={1}
-                  accept="image/png, image/jpeg"
-                >
+                <Upload name="Digital_Photo" maxCount={1} accept="image/*">
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
@@ -292,12 +287,12 @@ const WorkVisa = () => {
                   {
                     validator: isFileEmpty,
                   },
-                  // {
-                  //   validator: isImage,
-                  // },
+                  {
+                    validator: isImage,
+                  },
                 ]}
               >
-                <Upload name="Marriage_Photo" maxCount={1}>
+                <Upload name="Marriage_Photo" maxCount={1} accept="image/*">
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
