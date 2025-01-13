@@ -24,6 +24,7 @@ import {
   PAYMENT_DETAILS_OPTIONS,
   COUNTRY_CODE_OPTIONS,
 } from "../selectOptions";
+import { LANGUAGE_OPTIONS } from "../languageSelectOptions";
 
 const { TextArea } = Input;
 
@@ -1088,9 +1089,10 @@ const USA = () => {
             >
               <Select
                 mode="multiple"
+                options={LANGUAGE_OPTIONS}
                 allowClear
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[260px] md:max-w-[300px] max-h-[145px] overflow-y-auto"
               />
             </Form.Item>
             <Form.Item
