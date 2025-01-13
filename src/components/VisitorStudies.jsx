@@ -208,118 +208,174 @@ const VisitorStudies = () => {
           </fieldset>
           <fieldset>
             <legend className="font-bold !text-black">Visitor To Study</legend>
-            <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
-              <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              name="TRF"
-              label="TRF"
-              className="w-[300px]"
-              valuePropName="file"
-              getValueFromEvent={getFile}
-              rules={[
-                {
-                  required: true,
-                  message: "Kindly upload your TRF!",
-                },
-                {
-                  validator: isFileEmpty,
-                },
-              ]}
-            >
-              <Upload name="TRF" maxCount={1}>
-                <Button
-                  icon={<UploadOutlined />}
-                  iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
-                >
-                  Select File
-                </Button>
-              </Upload>
-            </Form.Item>
-          </fieldset>
-          <fieldset>
-            <legend className="font-bold !text-black !border-b-0 !mb-2">
-              IELTS Details
-            </legend>
-            <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
-              <Space
-                className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
-                align="baseline"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+              <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
+                <Radio.Group>
+                  <Radio value="yes">Yes</Radio>
+                  <Radio value="no">No</Radio>
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item
+                noStyle
+                shouldUpdate={(prevValues, currentValues) =>
+                  prevValues.IELTS !== currentValues.IELTS
+                }
               >
-                <div className="w-[32px]"></div>
-                <div className="font-semibold w-[200px]">Reading</div>
-                <div className="font-semibold w-[200px]">Listening</div>
-                <div className="font-semibold w-[200px]">Speaking</div>
-                <div className="font-semibold w-[200px]">Writing</div>
-              </Space>
-              <Form.List name="Ilets_Details">
-                {(fields, { add, remove }) => (
-                  <>
-                    {fields.map(({ key, name, ...restField }) => (
-                      <Space
-                        key={key}
-                        className="last: mb-0 !flex"
-                        align="baseline"
-                      >
-                        <Button
-                          type="link"
-                          icon={<CloseOutlined />}
-                          danger
-                          onClick={() => remove(name)}
-                        />
-                        <Form.Item
-                          {...restField}
-                          name={[name, "Reading"]}
-                          className="w-[200px]"
-                        >
-                          <Input maxLength={255} />
-                        </Form.Item>
-                        <Form.Item
-                          {...restField}
-                          name={[name, "Listening"]}
-                          className="w-[200px]"
-                        >
-                          <Input maxLength={255} />
-                        </Form.Item>
-                        <Form.Item
-                          {...restField}
-                          name={[name, "Speaking"]}
-                          className="w-[200px]"
-                        >
-                          <Input maxLength={255} />
-                        </Form.Item>
-                        <Form.Item
-                          {...restField}
-                          name={[name, "Writing"]}
-                          className="w-[200px]"
-                        >
-                          <Input maxLength={255} />
-                        </Form.Item>
-                      </Space>
-                    ))}
-                    {fields.length === 0 ? "" : <Divider className="m-0" />}
+                {({ getFieldValue }) =>
+                  getFieldValue("IELTS") === "yes" && (
                     <Form.Item
-                      className={
-                        fields.length === 0 ? "text-center mb-3" : "mb-3"
-                      }
+                      name="TRF"
+                      label="TRF"
+                      className="w-[300px]"
+                      valuePropName="file"
+                      getValueFromEvent={getFile}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Kindly upload your TRF!",
+                        },
+                        {
+                          validator: isFileEmpty,
+                        },
+                      ]}
                     >
-                      <Button
-                        type="link"
-                        onClick={() => add()}
-                        icon={<PlusOutlined />}
-                      >
-                        Add New
-                      </Button>
+                      <Upload name="TRF" maxCount={1}>
+                        <Button
+                          icon={<UploadOutlined />}
+                          iconPosition="end"
+                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                        >
+                          Select File
+                        </Button>
+                      </Upload>
                     </Form.Item>
-                  </>
-                )}
-              </Form.List>
+                  )
+                }
+              </Form.Item>
             </div>
           </fieldset>
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.IELTS !== currentValues.IELTS
+            }
+          >
+            {({ getFieldValue }) =>
+              getFieldValue("IELTS") === "yes" && (
+                <fieldset>
+                  <legend className="font-bold !text-black !border-b-0 !mb-2">
+                    IELTS Details
+                  </legend>
+                  <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                    <Space
+                      className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
+                      align="baseline"
+                    >
+                      <div className="w-[32px]"></div>
+                      <div className="font-semibold w-[200px]">Reading</div>
+                      <div className="font-semibold w-[200px]">Listening</div>
+                      <div className="font-semibold w-[200px]">Speaking</div>
+                      <div className="font-semibold w-[200px]">Writing</div>
+                    </Space>
+                    <Form.List name="Ilets_Details">
+                      {(fields, { add, remove }) => (
+                        <>
+                          {fields.map(({ key, name, ...restField }) => (
+                            <Space
+                              key={key}
+                              className="last: mb-0 !flex"
+                              align="baseline"
+                            >
+                              <Button
+                                type="link"
+                                icon={<CloseOutlined />}
+                                danger
+                                onClick={() => remove(name)}
+                              />
+                              <Form.Item
+                                {...restField}
+                                name={[name, "Reading"]}
+                                className="w-[200px]"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message:
+                                      "Kindly input information on Reading!",
+                                  },
+                                ]}
+                              >
+                                <Input maxLength={255} />
+                              </Form.Item>
+                              <Form.Item
+                                {...restField}
+                                name={[name, "Listening"]}
+                                className="w-[200px]"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message:
+                                      "Kindly input information on Listening!",
+                                  },
+                                ]}
+                              >
+                                <Input maxLength={255} />
+                              </Form.Item>
+                              <Form.Item
+                                {...restField}
+                                name={[name, "Speaking"]}
+                                className="w-[200px]"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message:
+                                      "Kindly input information on Speaking!",
+                                  },
+                                ]}
+                              >
+                                <Input maxLength={255} />
+                              </Form.Item>
+                              <Form.Item
+                                {...restField}
+                                name={[name, "Writing"]}
+                                className="w-[200px]"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message:
+                                      "Kindly input information on Writing!",
+                                  },
+                                ]}
+                              >
+                                <Input maxLength={255} />
+                              </Form.Item>
+                            </Space>
+                          ))}
+                          {fields.length === 0 ? (
+                            ""
+                          ) : (
+                            <Divider className="m-0" />
+                          )}
+                          <Form.Item
+                            className={
+                              fields.length === 0 ? "text-center mb-3" : "mb-3"
+                            }
+                          >
+                            <Button
+                              type="link"
+                              onClick={() => add()}
+                              icon={<PlusOutlined />}
+                            >
+                              Add New
+                            </Button>
+                          </Form.Item>
+                        </>
+                      )}
+                    </Form.List>
+                  </div>
+                </fieldset>
+              )
+            }
+          </Form.Item>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
             <Form.Item
               label="Preferred College"
