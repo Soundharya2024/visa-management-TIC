@@ -152,10 +152,43 @@ const VisitorVisa = () => {
                   disabled
                 />
               </Form.Item>
-              <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
+              <Form.Item
+                label="Mobile"
+                name="Mobile"
+                className="w-[300px]"
+                rules={[
+                  {
+                    validator: (_, value) => {
+                      if (value) {
+                        // Get the country code from the `selectCountry` dropdown
+                        let countryCode =
+                          form.getFieldValue("Country_Code") || "";
+                        // Strip the '+' if present
+                        countryCode = countryCode.startsWith("+")
+                          ? countryCode.slice(1)
+                          : countryCode;
+
+                        // Combine the country code and mobile number
+                        const fullNumber = `${countryCode}${value}`;
+
+                        // Validate the length
+                        if (fullNumber.length > 15) {
+                          return Promise.reject(
+                            new Error(
+                              `The mobile number (including the country code) should not exceed 15 digits.`
+                            )
+                          );
+                        }
+                      }
+
+                      return Promise.resolve();
+                    },
+                  },
+                ]}
+              >
                 <InputNumber
                   stringMode
-                  maxLength={10}
+                  maxLength={15}
                   addonBefore={selectCountry}
                   className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 />

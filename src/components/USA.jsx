@@ -169,10 +169,43 @@ const USA = () => {
                 disabled
               />
             </Form.Item>
-            <Form.Item label="Mobile" name="Mobile" className="w-[300px]">
+            <Form.Item
+              label="Mobile"
+              name="Mobile"
+              className="w-[300px]"
+              rules={[
+                {
+                  validator: (_, value) => {
+                    if (value) {
+                      // Get the country code from the `MobileCountrySelect` dropdown
+                      let countryCode =
+                        form.getFieldValue("Mobile_Country_Code") || "";
+                      // Strip the '+' if present
+                      countryCode = countryCode.startsWith("+")
+                        ? countryCode.slice(1)
+                        : countryCode;
+
+                      // Combine the country code and mobile number
+                      const fullNumber = `${countryCode}${value}`;
+
+                      // Validate the length
+                      if (fullNumber.length > 15) {
+                        return Promise.reject(
+                          new Error(
+                            `The mobile number (including the country code) should not exceed 15 digits.`
+                          )
+                        );
+                      }
+                    }
+
+                    return Promise.resolve();
+                  },
+                },
+              ]}
+            >
               <InputNumber
                 stringMode
-                maxLength={10}
+                maxLength={15}
                 addonBefore={MobileCountrySelect}
                 className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                 disabled
@@ -548,10 +581,39 @@ const USA = () => {
                   label="Phone Number"
                   name="Phone_Number1"
                   className="w-[300px]"
+                  rules={[
+                    {
+                      validator: (_, value) => {
+                        if (value) {
+                          // Get the country code from the `Phone1CountrySelect` dropdown
+                          let countryCode =
+                            form.getFieldValue("Phone1_Country_Code") || "";
+                          // Strip the '+' if present
+                          countryCode = countryCode.startsWith("+")
+                            ? countryCode.slice(1)
+                            : countryCode;
+
+                          // Combine the country code and phone number
+                          const fullNumber = `${countryCode}${value}`;
+
+                          // Validate the length
+                          if (fullNumber.length > 15) {
+                            return Promise.reject(
+                              new Error(
+                                `The phone number (including the country code) should not exceed 15 digits.`
+                              )
+                            );
+                          }
+                        }
+
+                        return Promise.resolve();
+                      },
+                    },
+                  ]}
                 >
                   <InputNumber
                     stringMode
-                    maxLength={10}
+                    maxLength={15}
                     addonBefore={Phone1CountrySelect}
                     className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                   />
@@ -802,11 +864,37 @@ const USA = () => {
                           message:
                             "Kindly input your Organization Phone Number!",
                         },
+                        {
+                          validator: (_, value) => {
+                            if (value) {
+                              // Get the country code from the `Phone2CountrySelect` dropdown
+                              let countryCode =
+                                form.getFieldValue("Phone2_Country_Code") || "";
+                              // Strip the '+' if present
+                              countryCode = countryCode.startsWith("+")
+                                ? countryCode.slice(1)
+                                : countryCode;
+
+                              // Combine the country code and phone number
+                              const fullNumber = `${countryCode}${value}`;
+
+                              // Validate the length
+                              if (fullNumber.length > 15) {
+                                return Promise.reject(
+                                  new Error(
+                                    `The phone number (including the country code) should not exceed 15 digits.`
+                                  )
+                                );
+                              }
+                            }
+                            return Promise.resolve();
+                          },
+                        },
                       ]}
                     >
                       <InputNumber
                         stringMode
-                        maxLength={10}
+                        maxLength={15}
                         addonBefore={Phone2CountrySelect}
                         className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
                       />
