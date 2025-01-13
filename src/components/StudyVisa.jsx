@@ -553,14 +553,14 @@ const StudyVisa = () => {
               </Form.Item>
               <Form.Item
                 name="Chat_and_call_History"
-                label="Chat and call History"
+                label="Chat and Call History"
                 valuePropName="file"
                 getValueFromEvent={getFile}
                 className="w-[300px]"
                 rules={[
                   // {
                   //   required: true,
-                  //   message: "Kindly upload your Chat and call History!",
+                  //   message: "Kindly upload your Chat and Call History!",
                   // },
                   {
                     validator: isFileEmpty,

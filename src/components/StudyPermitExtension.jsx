@@ -210,7 +210,7 @@ const StudyPermitExtension = () => {
             rules={[
               // {
               //   required: true,
-              //   message: "Kindly upload your passport!",
+              //   message: "Kindly upload your Medical Certificate!",
               // },
               {
                 validator: isFileEmpty,
@@ -249,7 +249,7 @@ const StudyPermitExtension = () => {
                 rules={[
                   // {
                   //   required: true,
-                  //   message: "Kindly upload your passport!",
+                  //   message: "Kindly upload your Study Permit!",
                   // },
                   {
                     validator: isFileEmpty,

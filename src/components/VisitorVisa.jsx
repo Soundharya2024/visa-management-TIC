@@ -233,7 +233,7 @@ const VisitorVisa = () => {
                         {
                           required: true,
                           message:
-                            "Kindly input your information on Whom They Meet!",
+                            "Kindly input information on Whom They Meet!",
                         },
                       ]}
                     >
@@ -1037,8 +1037,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message:
-                            "Kindly input your information on Present Occupation!",
+                          message: "Kindly input your Present Occupation!",
                         },
                       ]}
                     >
@@ -2069,7 +2068,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message: "Kindly input Reading!",
+                          message: "Kindly input Reading Score!",
                         },
                       ]}
                     >
@@ -2085,7 +2084,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message: "Kindly input Listening!",
+                          message: "Kindly input Listening Score!",
                         },
                       ]}
                     >
@@ -2101,7 +2100,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message: "Kindly input Writing!",
+                          message: "Kindly input Writing Score!",
                         },
                       ]}
                     >
@@ -2117,7 +2116,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message: "Kindly input Speaking!",
+                          message: "Kindly input Speaking Score!",
                         },
                       ]}
                     >
@@ -2133,7 +2132,7 @@ const VisitorVisa = () => {
                       rules={[
                         {
                           required: true,
-                          message: "Kindly input Overall!",
+                          message: "Kindly input Overall Score!",
                         },
                       ]}
                     >
@@ -2178,7 +2177,7 @@ const VisitorVisa = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Kindly select Relation!",
+                        message: "Kindly choose Relation!",
                       },
                     ]}
                   >
