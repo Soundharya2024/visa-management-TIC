@@ -245,7 +245,11 @@ const StudyWorkPermitExtension = () => {
                   },
                 ]}
               >
-                <Upload name="Digital_Photo" maxCount={1}>
+                <Upload
+                  name="Digital_Photo"
+                  maxCount={1}
+                  accept="image/png, image/jpeg"
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
